@@ -18,7 +18,13 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+
+#ifndef _MSC_VER
 #include <dirent.h>
+#else
+#include <filesystem>
+namespace fs = std::experimental::filesystem;
+#endif
 
 #include "FileUtils.hpp"
 
@@ -29,17 +35,23 @@ BEGIN_NAMESPACE_LIBGENE_UTILS_
 
 bool IsDirectory(const std::string& path)
 {
-    if (DIR *dir = opendir(path.c_str()); dir != nullptr) {
+#ifndef _MSC_VER
+    DIR *dir = opendir(path.c_str());
+    if (dir != nullptr) {
         closedir(dir);
         return true;
     }
     return false;
+#else
+    return fs::is_directory(path);
+#endif
 }
 
 std::vector<std::string> GetDirectoryContents(const std::string& path)
 {
     std::vector<std::string> contents;
 
+#ifndef _MSC_VER
     if (DIR *dir = opendir(path.c_str()); dir != nullptr) {
         /* print all the files and directories within directory */
         struct dirent *dir_entry;
@@ -54,9 +66,21 @@ std::vector<std::string> GetDirectoryContents(const std::string& path)
             }
         }
         closedir(dir);
+#else
+    if (fs::is_directory(path)) {
+        for (auto& p : fs::directory_iterator(path)) {
+            std::string name = p.path().filename().generic_string();
+            if (name.front() != '.' /* hidden file */ &&
+                name != "." &&
+                name != ".." &&
+                name != ".DS_Store") {
+                contents.push_back(path + '/' + name);
+            }
+        }
+#endif
     } else
         throw std::runtime_error("Could not open directory");
-
+    
     return contents;
 }
 

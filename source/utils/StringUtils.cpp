@@ -18,7 +18,6 @@
 #include <algorithm>
 #include <locale>
 #include <cctype>
-#include <dirent.h>
 
 #include "StringUtils.hpp"
 

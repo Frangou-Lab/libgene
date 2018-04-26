@@ -22,7 +22,11 @@
 #include <cassert>
 #include <limits>
 
+#ifdef _MSC_VER
+#include <any>
+#else
 #include <experimental/any>
+#endif
 
 #ifdef PUGIXML_WCHAR_MODE
 #	include <wchar.h>

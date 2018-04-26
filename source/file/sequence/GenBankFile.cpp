@@ -17,6 +17,7 @@
 #include <cassert>
 #include <string_view>
 #include <string>
+#include <cctype>
 
 #include "GenBankFile.hpp"
 
@@ -82,7 +83,7 @@ SequenceRecord GenBankFile::Read()
             break;
         } else if (entered_feature_section) {
             string_view skipped_5_spaces = string_view(last_read_line_).substr(5);
-            annotation_lines.append(skipped_5_spaces.cbegin(), skipped_5_spaces.size());
+            annotation_lines.append(skipped_5_spaces.data(), skipped_5_spaces.size());
             annotation_lines += '\n';
         } else if (last_read_line_.find("FEATURES") == 0) {
             entered_feature_section = true;

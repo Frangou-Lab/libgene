@@ -57,7 +57,6 @@ class SequenceRecord {
     SequenceRecord& operator=(const SequenceRecord& other);
     ~SequenceRecord() = default;
 
-    constexpr
     bool Empty() const noexcept
     {
         return seq.empty();

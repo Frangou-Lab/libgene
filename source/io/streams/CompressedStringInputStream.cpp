@@ -116,17 +116,6 @@ void CompressedStringInputStream::ResetFilePointer()
     memset(buf_, 0, BUFSIZ);
 }
 
-#if _WIN32
-#ifndef _WIN64
-
-int64_t gzoffset(const gzFile file)
-{
-    return 1;
-}
-
-#endif  // _WIN64
-#endif  // _WIN32
-
 int64_t CompressedStringInputStream::position() const noexcept
 {
     if (gzfile_)

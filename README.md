@@ -6,7 +6,7 @@ Usage
 
 Building
 --------
-Requires Xcode 6.3+
+Requires Xcode 9.3+
 
 Acknowledgements
 ----------------

@@ -103,7 +103,7 @@ struct BarcodeRecord {
     /* Optional. May be empty */
     std::string barcode2;       // #3
 
-    constexpr bool Empty() const noexcept
+    bool Empty() const noexcept
     {
         return barcode.empty();
     }

@@ -94,7 +94,7 @@ std::string_view strstr_simd(std::string_view haystack, const std::string& needl
     const int64_t length = needle.size();
     for (; !(haystack = match_by_pairs_sse2(haystack, needle_)).empty(); haystack.remove_prefix(1))
     {
-        if (haystack.size() >= length && !memcmp(haystack.begin() + 2, needle_ + 2, length - 2))
+        if (haystack.size() >= length && !memcmp(haystack.data() + 2, needle_ + 2, length - 2))
             return haystack;
     }
     return std::string_view();
@@ -105,14 +105,14 @@ static std::string_view match_by_pairs_sse2(std::string_view haystack, const cha
     const __m128i zero_mask = _mm_setzero_si128();
     const __m128i c0_pattern = _mm_set1_epi8(pattern[0]);
     const __m128i c1_pattern = _mm_set1_epi8(pattern[1]);
-    uint8_t unaligned_length = 0x0F & (intptr_t)haystack.begin(); // a part of the string, which
+    uint8_t unaligned_length = 0x0F & (intptr_t)haystack.data(); // a part of the string, which
                                                                   // requires special treatment.
 
     uint16_t pair = *(uint16_t*)(pattern);
     uint32_t eq_zero_mask, match_mask;
     if (unaligned_length != 0)
     {
-        __m128i unaligned_chars = _mm_load_si128((const __m128i*)(haystack.begin() - unaligned_length));
+        __m128i unaligned_chars = _mm_load_si128((const __m128i*)(haystack.data() - unaligned_length));
         eq_zero_mask = _mm_movemask_epi8(_mm_cmpeq_epi8(zero_mask, unaligned_chars));
         eq_zero_mask >>= unaligned_length;
         
@@ -136,13 +136,13 @@ static std::string_view match_by_pairs_sse2(std::string_view haystack, const cha
         
         haystack.remove_prefix(16 - unaligned_length);
         
-        if (*((uint16_t*)(haystack.begin() - 1)) == pair)
+        if (*((uint16_t*)(haystack.data() - 1)) == pair)
             return temp_copy.substr(15 - unaligned_length); // Used to be: '(16 - unaligned_length) - 1'
     }
     
     for (;;)
     {
-        __m128i next16_chars = _mm_load_si128((const __m128i*)haystack.cbegin());
+        __m128i next16_chars = _mm_load_si128((const __m128i*)haystack.data());
         eq_zero_mask = _mm_movemask_epi8(_mm_cmpeq_epi8(zero_mask, next16_chars));
         
         match_mask =  _mm_movemask_epi8(_mm_cmpeq_epi8(c0_pattern, next16_chars));
@@ -162,7 +162,7 @@ static std::string_view match_by_pairs_sse2(std::string_view haystack, const cha
         
         haystack.remove_prefix(16);
         
-        if (*((uint16_t*)(haystack.cbegin() - 1)) == pair)
+        if (*((uint16_t*)(haystack.data() - 1)) == pair)
             return copy.substr(15); // 16 - 1
     }
 }

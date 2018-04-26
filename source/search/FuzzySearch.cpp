@@ -336,10 +336,10 @@ void ExactSearch(std::vector<std::pair<int64_t, int64_t>>& occurrences,
 {
     int64_t index = -1;
     std::string_view found;
-    const char * const start = reference.cbegin();
+    const char * const start = reference.data();
     
     while (!(found = strstr_simd(reference.substr(index + 1), query)).empty()) {
-        index = found.cbegin() - start;
+        index = found.data() - start;
         occurrences.push_back({index, query.size()});
     }
 }
