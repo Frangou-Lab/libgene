@@ -10,6 +10,7 @@
 		CF54E6302069349E00577A7A /* Def.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CF54E62F2069349E00577A7A /* Def.hpp */; };
 		CF54E6322069352900577A7A /* Trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF54E6312069352900577A7A /* Trie.cpp */; };
 		CF5B720320205A5D00E01975 /* BKtree-Hamming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5B720220205A5D00E01975 /* BKtree-Hamming.cpp */; };
+		CF92B15D20B3EDC200787E0C /* libgene.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFBE22BE1F0F9AD100817B71 /* libgene.a */; };
 		CFBE23561F0F9B0D00817B71 /* ColumnType.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBE22C61F0F9B0D00817B71 /* ColumnType.h */; };
 		CFBE23571F0F9B0D00817B71 /* Extensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE22C71F0F9B0D00817B71 /* Extensions.cpp */; };
 		CFBE23581F0F9B0D00817B71 /* Extensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE22C81F0F9B0D00817B71 /* Extensions.hpp */; };
@@ -128,12 +129,25 @@
 		CFE342891FF2301300312426 /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE342881FF2301300312426 /* FileUtils.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CF92B15C20B3EDA300787E0C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = $SRCROOT/../lib;
+			dstSubfolderSpec = 0;
+			files = (
+				CF92B15D20B3EDC200787E0C /* libgene.a in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CF3EF76D1FBEDC210085EAE3 /* MiscPrimitives.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MiscPrimitives.hpp; sourceTree = "<group>"; };
 		CF54E62F2069349E00577A7A /* Def.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Def.hpp; sourceTree = "<group>"; };
 		CF54E6312069352900577A7A /* Trie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trie.cpp; sourceTree = "<group>"; };
 		CF5B720220205A5D00E01975 /* BKtree-Hamming.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "BKtree-Hamming.cpp"; sourceTree = "<group>"; };
-		CFBE22BE1F0F9AD100817B71 /* liblibgene.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibgene.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFBE22BE1F0F9AD100817B71 /* libgene.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgene.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBE22C61F0F9B0D00817B71 /* ColumnType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnType.h; sourceTree = "<group>"; };
 		CFBE22C71F0F9B0D00817B71 /* Extensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extensions.cpp; sourceTree = "<group>"; };
 		CFBE22C81F0F9B0D00817B71 /* Extensions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Extensions.hpp; sourceTree = "<group>"; };
@@ -283,7 +297,7 @@
 		CFBE22BF1F0F9AD100817B71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CFBE22BE1F0F9AD100817B71 /* liblibgene.a */,
+				CFBE22BE1F0F9AD100817B71 /* libgene.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -670,6 +684,7 @@
 				CFBE22BB1F0F9AD100817B71 /* Frameworks */,
 				CFBE22BC1F0F9AD100817B71 /* Headers */,
 				CFE342CF1FF256D900312426 /* Run Copy Headers Script */,
+				CF92B15C20B3EDA300787E0C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -677,7 +692,7 @@
 			);
 			name = libgene;
 			productName = libgene;
-			productReference = CFBE22BE1F0F9AD100817B71 /* liblibgene.a */;
+			productReference = CFBE22BE1F0F9AD100817B71 /* libgene.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -913,7 +928,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CLANG_X86_VECTOR_INSTRUCTIONS = avx;
 				DEVELOPMENT_TEAM = NHY33MD999;
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -932,7 +947,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CLANG_X86_VECTOR_INSTRUCTIONS = avx;
 				DEVELOPMENT_TEAM = NHY33MD999;
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
