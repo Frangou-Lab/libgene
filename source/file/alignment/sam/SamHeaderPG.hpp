@@ -21,6 +21,8 @@
 
 #include "SamHeaderComponent.hpp"
 
+namespace gene {
+
 class SamHeaderPG : public SamHeaderComponent {
  public:
     SamHeaderPG() = default;
@@ -62,5 +64,7 @@ class SamHeaderPG : public SamHeaderComponent {
 
     std::string report() const override;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_SAM_SAMHEADERPG_HPP_

@@ -19,6 +19,8 @@
 
 #include <string_view>
 
+namespace gene {
+
 class WildcardMatcher {
  public:
     static bool Match(std::string_view expression, std::string_view str)
@@ -61,5 +63,7 @@ class WildcardMatcher {
         return expression.empty();
     }
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_SEARCH_WILDCARDMATCHER_HPP_

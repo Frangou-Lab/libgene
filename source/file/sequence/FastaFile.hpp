@@ -23,6 +23,8 @@
 #include <vector>
 #include <memory>
 
+namespace gene {
+
 class FastaFile final : public SequenceFile {
  public:
     FastaFile(const std::string& path,
@@ -43,5 +45,7 @@ class FastaFile final : public SequenceFile {
     bool split_;
 
 };
+
+}  // namespace gene
 
 #endif /* FastaFile_hpp */

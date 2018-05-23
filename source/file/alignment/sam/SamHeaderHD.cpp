@@ -18,7 +18,10 @@
 
 #include "SamHeaderHD.hpp"
 
-SamHeaderHD::SamHeaderHD(const std::string& line) {
+namespace gene {
+
+SamHeaderHD::SamHeaderHD(const std::string& line)
+{
     int64_t tag_position = std::string::npos;
     if ((tag_position = line.find("VN")) != std::string::npos) {
         VN = ExtractNextTagValue_(line, &tag_position);
@@ -31,7 +34,8 @@ SamHeaderHD::SamHeaderHD(const std::string& line) {
     }
 }
 
-std::string SamHeaderHD::report() const {
+std::string SamHeaderHD::report() const
+{
     std::string str = "HD:\n";
     if (!VN.empty())
         str += "\tVN: " + VN + '\n';
@@ -42,3 +46,5 @@ std::string SamHeaderHD::report() const {
 
     return str;
 }
+
+}  // namespace gene

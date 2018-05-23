@@ -25,10 +25,13 @@
 
 using std::string;
 
+namespace gene {
+
 SamFile::SamFile(const std::string& path,
                  const std::unique_ptr<CommandLineFlags>& flags,
                  OpenMode mode)
-: AlignmentFile(path, FileType::Sam, flags, mode) {
+: AlignmentFile(path, FileType::Sam, flags, mode)
+{
     switch (mode) {
         case OpenMode::Read:
             readHeader();
@@ -39,10 +42,12 @@ SamFile::SamFile(const std::string& path,
     }
 }
 
-void SamFile::writeHeader() {
+void SamFile::writeHeader()
+{
 }
 
-void SamFile::readHeader() {
+void SamFile::readHeader()
+{
     char ch;
 
     std::vector<std::string> headerLines;
@@ -54,7 +59,8 @@ void SamFile::readHeader() {
         header = std::make_unique<SamHeader>(headerLines);
 }
 
-void SamFile::write(const SamRecord& record) {
+void SamFile::write(const SamRecord& record)
+{
     out_file_->Write(record.chrom);
     out_file_->Write('\t');
     out_file_->Write(std::to_string(record.chromStart));
@@ -65,30 +71,39 @@ void SamFile::write(const SamRecord& record) {
     out_file_->WriteLine();
 }
 
-SamRecord SamFile::read() {
+SamRecord SamFile::read()
+{
     return SamRecord(in_file_->ReadLine());
 }
 
-int64_t SamFile::length() const {
+int64_t SamFile::length() const
+{
     return IOFile::length();
 }
 
-int64_t SamFile::position() const {
+int64_t SamFile::position() const
+{
     return IOFile::position();
 }
 
-bool SamFile::isValidAlignmentFile() const {
+bool SamFile::isValidAlignmentFile() const
+{
     return true;
 }
 
-string SamFile::strFileType() const {
+string SamFile::strFileType() const
+{
     return "sam";
 }
 
-string SamFile::defaultExtension() {
+string SamFile::defaultExtension()
+{
     return "sam";
 }
 
-std::vector<std::string> SamFile::extensions() {
+std::vector<std::string> SamFile::extensions()
+{
     return {"sam"};
 }
+
+}  // namespace gene

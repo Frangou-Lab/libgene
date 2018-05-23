@@ -26,6 +26,8 @@
 #include "../../def/Flags.hpp"
 #include "../../log/Logger.hpp"
 
+namespace gene {
+
 std::string FastqFile::defaultExtension()
 {
     return "fastq";
@@ -168,3 +170,5 @@ bool FastqFile::isValidGeneFile() const
 {
     return true;
 }
+
+}  // namespace gene

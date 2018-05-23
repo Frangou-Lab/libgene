@@ -17,6 +17,8 @@
 #include "BedFile.hpp"
 #include "../sam/SamRecord.hpp"
 
+namespace gene {
+
 BedFile::BedFile(const std::string& path,
                  const std::unique_ptr<CommandLineFlags>& flags,
                  OpenMode mode)
@@ -96,3 +98,5 @@ std::vector<std::string> BedFile::extensions()
 {
     return {"bed"};
 }
+
+}  // namespace gene

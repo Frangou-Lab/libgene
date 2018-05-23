@@ -17,12 +17,9 @@
 #ifndef LIBGENE_UTILS_FILEUTILS_H_
 #define LIBGENE_UTILS_FILEUTILS_H_
 
-#define BEGIN_NAMESPACE_LIBGENE_UTILS_ namespace utils {
-#define END_NAMESPACE_LIBGENE_UTILS_ }
-
-BEGIN_NAMESPACE_LIBGENE_UTILS_
-
 #include <fstream>
+
+namespace gene::utils {
 
 bool IsDirectory(const std::string& path);
 std::vector<std::string> GetDirectoryContents(const std::string& path);
@@ -31,9 +28,6 @@ int64_t GetFileSize(const std::string& path);
 bool CheckFstreamsEqual(std::ifstream& f1, std::ifstream& f2);
 bool CheckFstreamsEqualUnordered(std::ifstream& f1, std::ifstream& f2);
 
-END_NAMESPACE_LIBGENE_UTILS_
-
-#undef BEGIN_NAMESPACE_LIBGENE_UTILS_
-#undef END_NAMESPACE_LIBGENE_UTILS_
+}  // namespace gene::utils
 
 #endif  // LIBGENE_UTILS_FILEUTILS_H_

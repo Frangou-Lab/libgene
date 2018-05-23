@@ -26,6 +26,8 @@
 #include "../sam/SamHeader.hpp"
 #include "../../../io/BgzfFile.hpp"
 
+namespace gene {
+
 class SamRecord;
 
 class BamFile : public AlignmentFile, BgzfFile {
@@ -64,5 +66,7 @@ class BamFile : public AlignmentFile, BgzfFile {
     int64_t position() const override;
     int64_t length() const override;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_BAM_BAMFILE_HPP_

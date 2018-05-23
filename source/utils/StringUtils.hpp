@@ -27,10 +27,7 @@ constexpr bool kCompiledForWindows = true;
 constexpr bool kCompiledForWindows = false;
 #endif  // _MSC_VER
 
-#define BEGIN_NAMESPACE_LIBGENE_UTILS_ namespace utils {
-#define END_NAMESPACE_LIBGENE_UTILS_ }
-
-BEGIN_NAMESPACE_LIBGENE_UTILS_
+namespace gene::utils {
 
 std::string InsertSuffixBeforePathExtension(std::string path, std::string suffix);
 
@@ -56,9 +53,6 @@ std::string CommaEscapedString(const std::string& to_escape);
 // Result: "0017"
 std::string PaddedToLengthString(int number, int length);
 
-END_NAMESPACE_LIBGENE_UTILS_
-
-#undef BEGIN_NAMESPACE_LIBGENE_UTILS_
-#undef END_NAMESPACE_LIBGENE_UTILS_
+}  // namespace gene::utils
 
 #endif  // LIBGENE_UTILS_STRINGUTILS_HPP_

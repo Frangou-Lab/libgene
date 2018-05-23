@@ -25,6 +25,8 @@
 #include "../../io/IOFile.hpp"
 #include "../../flags/CommandLineFlags.hpp"
 
+namespace gene {
+
 enum class FileKind {
     SingleEnd,
     PairedEnd_1,
@@ -69,5 +71,7 @@ class SequenceFile : public IOFile {
     static std::vector<std::string> supportedExtensions();
     static std::vector<std::string> defaultFileFormats();
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_SEQUENCE_SEQUENCEFILE_HPP_

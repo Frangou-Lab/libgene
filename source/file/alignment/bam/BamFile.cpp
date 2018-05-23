@@ -27,6 +27,8 @@
 
 using std::string;
 
+namespace gene {
+
 BamFile::BamFile(const std::string& path,
                  const std::unique_ptr<CommandLineFlags>& flags,
                  OpenMode mode)
@@ -300,26 +302,34 @@ SamRecord BamFile::read() {
     return record;
 }
 
-int64_t BamFile::position() const {
+int64_t BamFile::position() const
+{
     return BgzfFile::position();
 }
 
-int64_t BamFile::length() const {
+int64_t BamFile::length() const
+{
     return BgzfFile::length();
 }
 
-bool BamFile::isValidAlignmentFile() const {
+bool BamFile::isValidAlignmentFile() const
+{
     return true;
 }
 
-string BamFile::strFileType() const {
+string BamFile::strFileType() const
+{
     return "bam";
 }
 
-string BamFile::defaultExtension() {
+string BamFile::defaultExtension()
+{
     return "bam";
 }
 
-std::vector<std::string> BamFile::extensions() {
+std::vector<std::string> BamFile::extensions()
+{
     return {"bam"};
 }
+
+}  // namespace gene

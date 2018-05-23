@@ -33,15 +33,14 @@
 #include "../def/Flags.hpp"
 #include "../io/streams/PlainStringInputStream.hpp"
 
-#define BEGIN_NAMESPACE_LIBGENE_UTILS_ namespace utils {
-#define END_NAMESPACE_LIBGENE_UTILS_ }
+namespace gene::utils {
 
-BEGIN_NAMESPACE_LIBGENE_UTILS_
-
-std::string ConstructOutputNameWithFile(std::string inputFileName, FileType type,
-                                        std::string outputFilePath,
-                                        const std::unique_ptr<CommandLineFlags>& flags,
-                                        std::string suffix)
+std::string
+ConstructOutputNameWithFile(std::string inputFileName,
+                            FileType type,
+                            std::string outputFilePath,
+                            const std::unique_ptr<CommandLineFlags>& flags,
+                            std::string suffix)
 {
     if (!outputFilePath.empty()) {
         if (suffix == "-split") {
@@ -177,10 +176,11 @@ std::string extension2str(const std::string &ext)
 }
 
 //
-// Searches for a reverse  string 'what' which is interpreted as a reverse complement
-// without having to actually create this reverse complement
+// Searches for a reverse  string 'what' which is interpreted as a reverse
+// complement without having to actually create this reverse complement
 //
-int64_t FindAsReverseComplement(const std::string& where, const std::string& what)
+int64_t FindAsReverseComplement(const std::string& where,
+                                const std::string& what)
 {
     const int64_t targetLength = where.size();
     const int64_t adapterLength = what.size();
@@ -191,7 +191,8 @@ int64_t FindAsReverseComplement(const std::string& where, const std::string& wha
     int64_t j;
     for (int64_t i = 0; i < targetLength - adapterLength; ++i) {
         for (j = adapterLength - 1;
-             j >= 0 && AreComplements(where[i + (j - adapterLength - 1)], what[j]); --j) {
+             j >= 0 && AreComplements(where[i + (j - adapterLength - 1)],
+                                      what[j]); --j) {
             ;
         }
 
@@ -204,8 +205,9 @@ int64_t FindAsReverseComplement(const std::string& where, const std::string& wha
 }
 
 //
-// Searches for a reverse string 'what' which is interpreted as a reverse complement
-// without having to actually create this reverse complement starting from the end of 'where'
+// Searches for a reverse string 'what' which is interpreted as a reverse
+// complement without having to actually create this reverse complement
+// starting from the end of 'where'
 //
 int64_t RfindAsReverseComplement(const std::string& where, const std::string& what)
 {
@@ -304,4 +306,4 @@ std::vector<std::string> LoadQueriesFromFile(std::string path)
     return queries;
 }
 
-END_NAMESPACE_LIBGENE_UTILS_
+}

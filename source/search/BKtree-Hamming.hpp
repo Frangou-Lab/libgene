@@ -28,6 +28,8 @@
 #include "../def/Def.hpp"
 #include "../utils/MiscPrimitives.hpp"
 
+namespace gene {
+
 struct BarcodeRecord;
 
 class BKTree {
@@ -61,7 +63,7 @@ class BKTree {
 };
 
 class BKTree2 {
-public:
+ public:
     BKTree2(int max_distance);
     bool Add(const BarcodeRecord& word);
     void Sort();
@@ -69,7 +71,7 @@ public:
 
     const int max_distance;
 
-private:
+ private:
     struct Node {
         struct ChildPair {
             int32_t distance;
@@ -109,5 +111,7 @@ struct BarcodeRecord {
     }
     int original_index{-1};
 };
+
+}  // namespace gene
 
 #endif  // BKtree_hpp

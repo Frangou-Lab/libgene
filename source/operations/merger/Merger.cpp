@@ -20,6 +20,8 @@
 #include "Merger.hpp"
 #include "../../log/Logger.hpp"
 
+namespace gene {
+
 Merger::Merger(std::vector<std::string> input_paths,
                std::string output_path,
                std::unique_ptr<CommandLineFlags>&& flags)
@@ -94,3 +96,5 @@ bool Merger::Process()
     
     return true;
 }
+
+}  // namespace gene

@@ -27,6 +27,8 @@
 #include "../../../def/Flags.hpp"
 #include "../../../log/Logger.hpp"
 
+namespace gene {
+
 FinderFile::FinderFile(std::string path,
                        const std::unique_ptr<CommandLineFlags>& flags,
                        OpenMode mode,
@@ -173,7 +175,10 @@ void FinderFile::Prepare_(OpenMode mode)
             if (has_annotation_)
                 column_types.AddColumn(index++, Desc, "Annotation");
 
-            if (paired_queries_search_mode_ || mixed_strain_queries_search_mode_ || coupled_queries_search_mode_) {
+            if (paired_queries_search_mode_ ||
+                mixed_strain_queries_search_mode_ ||
+                coupled_queries_search_mode_) {
+
                 column_types.AddColumn(index++, Data, "Left query start");
                 column_types.AddColumn(index++, Data, "Amplicon start");
                 column_types.AddColumn(index++, Data, "Amplicon end");
@@ -182,7 +187,10 @@ void FinderFile::Prepare_(OpenMode mode)
                 column_types.AddColumn(index++, Data, "Start position");
                 column_types.AddColumn(index++, Data, "End position");
             }
-            if (paired_queries_search_mode_ || mixed_strain_queries_search_mode_ || coupled_queries_search_mode_) {
+            if (paired_queries_search_mode_ ||
+                mixed_strain_queries_search_mode_ ||
+                coupled_queries_search_mode_) {
+
                 column_types.AddColumn(index++, Data, "Left query ID");
                 column_types.AddColumn(index++, Data, "Left query");
                 column_types.AddColumn(index++, Data, "Right query ID");
@@ -207,7 +215,10 @@ void FinderFile::Prepare_(OpenMode mode)
             if (has_annotation_)
                 header_.push_back("Annotation");
 
-            if (paired_queries_search_mode_ || mixed_strain_queries_search_mode_ || coupled_queries_search_mode_) {
+            if (paired_queries_search_mode_ ||
+                mixed_strain_queries_search_mode_ ||
+                coupled_queries_search_mode_) {
+
                 header_.push_back("Left query start");
                 header_.push_back("Amplicon start");
                 header_.push_back("Amplicon end");
@@ -240,3 +251,5 @@ void FinderFile::Prepare_(OpenMode mode)
         }
     }
 }
+
+}  // namespace gene

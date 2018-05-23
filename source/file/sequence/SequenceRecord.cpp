@@ -22,6 +22,8 @@
 #include "../alignment/sam/SamRecord.hpp"
 #include "../../search/FuzzySearch.hpp"
 
+namespace gene {
+
 SequenceRecord::SequenceRecord(SamRecord&& sam)
 {
     name = std::move(sam.QNAME);
@@ -169,3 +171,5 @@ void SequenceRecord::ShiftQuality(FastqVariant from, FastqVariant to)
             c = clamp;
     }
 }
+
+}  // namespace gene

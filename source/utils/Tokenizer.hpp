@@ -20,6 +20,8 @@
 #include <string>
 #include <string_view>
 
+namespace gene {
+
 class Tokenizer {
  private:
     std::string_view text_;
@@ -43,5 +45,7 @@ class Tokenizer {
     // Allows to read the value only once!
     std::string&& GetNextToken();
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_UTILS_TOKENIZER_HPP_

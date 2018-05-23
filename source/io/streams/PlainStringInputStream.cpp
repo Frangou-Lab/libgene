@@ -22,6 +22,8 @@
 #include "StringStream.hpp"
 #include "../../utils/MiscPrimitives.hpp"
 
+namespace gene {
+
 PlainStringInputStream::PlainStringInputStream(const std::string& file_path)
 : StringInputStream(file_path)
 {
@@ -109,3 +111,5 @@ PlainStringInputStream::operator bool() const
 {
     return (file_ != nullptr) && (ftell(file_) < length_);
 }
+
+}  // namespace gene

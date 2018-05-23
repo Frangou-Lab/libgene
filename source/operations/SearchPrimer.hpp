@@ -19,9 +19,10 @@
 
 #include <string>
 
-class SearchPrimer
-{
-public:
+namespace gene {
+
+class SearchPrimer {
+ public:
     SearchPrimer(const std::string& seq, bool isRnaTarget, bool basesSubstituted);
     SearchPrimer(const std::string& seq, int number,
                  bool isRnaTarget, bool basesSubstituted);
@@ -90,7 +91,7 @@ public:
     bool IsRnaPrimer() const;
     const std::string& Complement();
     
-private:
+ private:
     std::string forwardSequence_;
     std::string reverseSequence_;
     std::string complement_;
@@ -102,5 +103,7 @@ private:
     bool rnaPrimer_{false};
     bool rnaTarget_{false};
 };
+
+}  // namespace gene
 
 #endif /* SearchPrimer_hpp */

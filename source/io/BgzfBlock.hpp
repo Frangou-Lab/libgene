@@ -20,6 +20,8 @@
 #include <cstdint>
 #include <cstdio>
 
+namespace gene {
+
 class BgzfBlock {
  private:
     bool InflateBlock_();
@@ -40,5 +42,7 @@ class BgzfBlock {
     const uint8_t* data() const noexcept;
     int32_t size() const noexcept;
 };
+
+}  // namespace gene
 
 #endif /* BgzfBlock_hpp */

@@ -20,7 +20,25 @@
 #include <cstdarg>
 #include <vector>
 
-namespace logger {
+int PrintfLog(const char* format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    if (gene::logger::logLambda) {
+        size_t size = vsnprintf(nullptr, 0, format, args);
+        va_end(args);
+        // Re-initialize 'args' variable since vsnprintf invalidates it every time.
+        va_start(args, format);
+        std::vector<char> buffer(size + 1, '\0');
+        vsnprintf(buffer.data(), size + 1, format, args);
+        gene::logger::logLambda(buffer.data());
+    }
+    va_end(args);
+    return 1;
+}
+
+
+namespace gene::logger {
 
 void Log(const char* format, ...)
 {
@@ -46,21 +64,4 @@ void Log(std::string message)
 
 std::function<void(std::string)> logLambda;
 
-}  // namespace logger
-
-int PrintfLog(const char* format, ...)
-{
-    va_list args;
-    va_start(args, format);
-    if (logger::logLambda) {
-        size_t size = vsnprintf(nullptr, 0, format, args);
-        va_end(args);
-        // Re-initialize 'args' variable since vsnprintf invalidates it every time.
-        va_start(args, format);
-        std::vector<char> buffer(size + 1, '\0');
-        vsnprintf(buffer.data(), size + 1, format, args);
-        logger::logLambda(buffer.data());
-    }
-    va_end(args);
-    return 1;
-}
+}  // namespace gene::logger

@@ -22,9 +22,11 @@
 
 #include "StringInputStream.hpp"
 
+namespace gene {
+
 class CompressedStringInputStream final : public StringInputStream {    
  public:
-    explicit CompressedStringInputStream(const std::string& fileName);
+    explicit CompressedStringInputStream(const std::string& file_path);
     ~CompressedStringInputStream() = default;
 
     std::string ReadLine() override;
@@ -36,5 +38,7 @@ class CompressedStringInputStream final : public StringInputStream {
  private:
     gzFile gzfile_;
 };
+
+}  // namespace gene
 
 #endif  // CompressedStringInputStream_hpp

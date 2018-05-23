@@ -22,9 +22,12 @@
 
 #include "StringStream.hpp"
 
+namespace gene {
+
 class StringInputStream : public StringStream {
  public:
-    static std::unique_ptr<StringInputStream> StreamWithFileName(const std::string& file_path);
+    static std::unique_ptr<StringInputStream>
+    StreamWithFileName(const std::string& file_path);
 
     explicit StringInputStream(const std::string& file_path);
     virtual std::string ReadLine() = 0;
@@ -32,5 +35,7 @@ class StringInputStream : public StringStream {
     virtual void ResetFilePointer() = 0;
     bool empty() const;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_IO_STREAMS_STRINGINPUTSTREAM_HPP_

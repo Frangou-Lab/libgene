@@ -26,6 +26,8 @@
 #include "../../flags/CommandLineFlags.hpp"
 #include "../../def/Flags.hpp"
 
+namespace gene {
+
 class Converter final : public Operation {
  public:
     Converter(const std::vector<std::string>& input_paths,
@@ -46,5 +48,7 @@ class Converter final : public Operation {
     FastqVariant outputFastqVariant;
     bool Init_() override;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_OPERATIONS_CONVERTER_HPP_

@@ -23,6 +23,8 @@
 #include "../AlignmentRecord.hpp"
 #include "SamTag.hpp"
 
+namespace gene {
+
 class SamRecord : public AlignmentRecord {
  public:
     SamRecord() = default;
@@ -58,6 +60,8 @@ class SamRecord : public AlignmentRecord {
     int64_t blockSizes;
     int64_t blockStart;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_SAM_SAMRECORD_HPP_
 

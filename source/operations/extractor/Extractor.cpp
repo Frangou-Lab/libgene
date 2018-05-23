@@ -30,6 +30,8 @@
 #include "../../log/Logger.hpp"
 #include "../../def/Def.hpp"
 
+namespace gene {
+
 constexpr int64_t kThreadLocalOutputBufferSize = 1024;
 
 template <typename TaskT>
@@ -473,3 +475,5 @@ static void LaunchMultithreadedTask(TaskT& task, int files_count)
         task.get();
     }
 }
+
+}  // namespace gene

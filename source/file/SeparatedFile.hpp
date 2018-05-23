@@ -26,6 +26,8 @@
 #include "../utils/Tokenizer.hpp"
 #include "../plist/ColumnTypesConfigurationCpp.hpp"
 
+namespace gene {
+
 class SeparatedFile : public IOFile {
  protected:
     virtual void Prepare_(OpenMode mode);
@@ -69,5 +71,7 @@ class SeparatedFile : public IOFile {
     std::string ReadLine();
     std::unique_ptr<ColumnTypesConfigurationCpp> column_types;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_SEPARATEDFILE_HPP_

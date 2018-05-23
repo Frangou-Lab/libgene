@@ -24,6 +24,8 @@
 
 #include "../plist/any/any.hpp"
 
+namespace gene {
+
 static const char ROOT_KEY[] = "column_types";
 static const char COLUMNS_KEY[] = "columns";
 static const char GROUPS_KEY[] = "groups";
@@ -240,3 +242,5 @@ std::shared_ptr<GroupWrapperCpp> ColumnTypesConfigurationCpp::getGroupByName(std
     }
     return *e;
 }
+
+}  // namespace gene

@@ -24,6 +24,8 @@
 #include <vector>
 #include <string>
 
+namespace gene {
+
 class Merger final : public Operation {
  public:
     Merger(std::vector<std::string> input_paths,
@@ -39,5 +41,7 @@ class Merger final : public Operation {
     int64_t total_size_in_bytes_{0};
     bool Init_() override;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_OPERATIONS_MERGER_HPP_

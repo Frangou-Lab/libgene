@@ -22,6 +22,8 @@
 
 #include "../../SeparatedFile.hpp"
 
+namespace gene {
+
 class FinderRecord;
 
 class FinderFile : public SeparatedFile {
@@ -47,5 +49,7 @@ class FinderFile : public SeparatedFile {
 
     void Write(FinderRecord& record);
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_FINDER_FINDERFILE_HPP_

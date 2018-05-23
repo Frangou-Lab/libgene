@@ -21,9 +21,10 @@
 #include <functional>
 #include <cstdint>
 
-#include "../flags/CommandLineFlags.hpp"
 #include "../file/sequence/SequenceFile.hpp"
 #include "../file/alignment/AlignmentFile.hpp"
+
+namespace gene {
 
 class CommandLineFlags;
 
@@ -48,5 +49,7 @@ class Operation {
     virtual ~Operation() = default;
     virtual bool Process();
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_OPERATIONS_OPERATION_HPP_

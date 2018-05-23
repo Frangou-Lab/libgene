@@ -23,13 +23,18 @@
 #include <vector>
 #include <memory>
 
-class GenomicCsvFile : public GenomicSeparatedFile
-{
-public:
-    GenomicCsvFile(const std::string& path, const std::unique_ptr<CommandLineFlags>& flags, OpenMode mode);
+namespace gene {
+
+class GenomicCsvFile : public GenomicSeparatedFile {
+ public:
+    GenomicCsvFile(const std::string& path,
+                   const std::unique_ptr<CommandLineFlags>& flags,
+                   OpenMode mode);
     static std::string defaultExtension();
     static std::string displayExtension();
     static std::vector<std::string> extensions();
 };
+
+}  // namespace gene
 
 #endif /* GenomicCsvFile_hpp */

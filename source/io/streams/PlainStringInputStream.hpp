@@ -21,6 +21,8 @@
 
 #include "StringInputStream.hpp"
 
+namespace gene {
+
 class PlainStringInputStream final : public StringInputStream {
  public:
     explicit PlainStringInputStream(const std::string& file_path);
@@ -31,5 +33,7 @@ class PlainStringInputStream final : public StringInputStream {
     void ResetFilePointer() override;
     explicit operator bool() const;
 };
+
+}  // namespace gene
 
 #endif  // PlainStringInputStream_hpp

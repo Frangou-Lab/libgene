@@ -23,6 +23,8 @@
 #include "../../file/sequence/SequenceRecord.hpp"
 #include "../../log/Logger.hpp"
 
+namespace gene {
+
 Converter::Converter(const std::vector<std::string>& input_paths,
                      const std::string& output_path,
                      std::unique_ptr<CommandLineFlags>&& flags)
@@ -150,3 +152,5 @@ bool Converter::Process()
 
     return true;
 }
+
+}  // namespace gene

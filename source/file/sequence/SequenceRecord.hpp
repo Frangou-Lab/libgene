@@ -24,6 +24,8 @@
 #include "../../def/FileType.hpp"
 #include "GenBankAnnotation.hpp"
 
+namespace gene {
+
 class SamRecord;
 
 class SequenceRecord {
@@ -83,5 +85,7 @@ class AminoAcidCpp {
     std::string seq;
     char name;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_SEQUENCE_SEQUENCERECORD_HPP_

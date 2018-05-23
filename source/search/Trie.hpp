@@ -22,6 +22,8 @@
 #include <stack>
 #include <cassert>
 
+namespace gene {
+
 constexpr int char2index_(char c) noexcept;
 
 class Trie {
@@ -84,5 +86,7 @@ constexpr int char2index_(char c) noexcept
             return -1;
     }
 }
+
+}  // namespace gene
 
 #endif  // LIBGENE_SEARCH_TRIE_HPP

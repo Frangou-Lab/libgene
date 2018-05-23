@@ -17,6 +17,8 @@
 #include "../io/IOFile.hpp"
 #include "../flags/CommandLineFlags.hpp"
 
+namespace gene {
+
 IOFile::IOFile(const std::string& path,
                FileType type,
                OpenMode mode)
@@ -89,3 +91,5 @@ void IOFile::ResetFilePointer()
     if (in_file_)
         in_file_->ResetFilePointer();
 }
+
+}  // namespace gene

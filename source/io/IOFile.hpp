@@ -25,6 +25,8 @@
 #include "streams/StringOutputStream.hpp"
 #include "../def/FileType.hpp"
 
+namespace gene {
+
 enum class OpenMode {
     Read,
     Write
@@ -51,5 +53,7 @@ class IOFile {
     virtual int64_t position() const;
     void ResetFilePointer();
 };
+
+}  // namespace gene
 
 #endif /* IOFile_hpp */

@@ -25,15 +25,16 @@
 #include "../AlignmentFile.hpp"
 #include "../sam/SamHeader.hpp"
 
+namespace gene {
+
 class AlignmentRecord;
 
-class BedFile : public AlignmentFile
-{
-private:
+class BedFile : public AlignmentFile {
+ private:
     void readHeader();
     void writeHeader();
     
-public:
+ public:
     BedFile(const std::string& path,
             const std::unique_ptr<CommandLineFlags>& flags,
             OpenMode mode);
@@ -50,5 +51,7 @@ public:
     virtual int64_t position() const override;
     virtual int64_t length() const override;
 };
+
+}  // namespace gene
 
 #endif /* BedFile_hpp */

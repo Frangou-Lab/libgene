@@ -21,7 +21,10 @@
 #include "SamHeader.hpp"
 #include "../../../log/Logger.hpp"
 
-SamHeader::SamHeader() {
+namespace gene {
+
+SamHeader::SamHeader()
+{
 }
 
 SamHeader::SamHeader(const std::vector<std::string>& headerLines) {
@@ -46,3 +49,5 @@ SamHeader::SamHeader(const std::vector<std::string>& headerLines) {
             PrintfLog("ERROR: Unknown tag: @%s\n", tag.c_str());
     }
 }
+
+}  // namespace gene

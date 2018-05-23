@@ -25,6 +25,8 @@
 #include "../../utils/StringUtils.hpp"
 #include "../../utils/CppUtils.hpp"
 
+namespace gene {
+
 AlignmentFile::AlignmentFile(std::string path,
                              FileType type,
                              const std::unique_ptr<CommandLineFlags>& flags,
@@ -84,3 +86,5 @@ std::vector<std::string> AlignmentFile::defaultFileFormats()
 {
     return {SamFile::defaultExtension(), BamFile::defaultExtension()};
 }
+
+}  // namespace gene

@@ -28,10 +28,7 @@ namespace fs = std::experimental::filesystem;
 
 #include "FileUtils.hpp"
 
-#define BEGIN_NAMESPACE_LIBGENE_UTILS_ namespace utils {
-#define END_NAMESPACE_LIBGENE_UTILS_ }
-
-BEGIN_NAMESPACE_LIBGENE_UTILS_
+namespace gene::utils {
 
 bool IsDirectory(const std::string& path)
 {
@@ -126,4 +123,4 @@ bool CheckFstreamsEqualUnordered(std::ifstream& f1, std::ifstream& f2)
     return true;
 }
 
-END_NAMESPACE_LIBGENE_UTILS_
+}  // namespace gene::utils

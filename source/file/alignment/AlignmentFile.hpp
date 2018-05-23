@@ -23,6 +23,8 @@
 
 #include "../../io/IOFile.hpp"
 
+namespace gene {
+
 class CommandLineFlags;
 class AlignmentRecord;
 class SamRecord;
@@ -59,5 +61,7 @@ class AlignmentFile : public IOFile {
     virtual int64_t position() const = 0;
     virtual int64_t length() const = 0;
 };
+
+}  // namespace libgene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_ALIGNMENTFILE_HPP_

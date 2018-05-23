@@ -18,8 +18,10 @@
 
 #include "SamHeaderSQ.hpp"
 
-SamHeaderSQ::SamHeaderSQ(const std::string& line)
-: LN(255) {
+namespace gene {
+
+SamHeaderSQ::SamHeaderSQ(const std::string& line) : LN(255)
+{
     int64_t tag_position = std::string::npos;
     if ((tag_position = line.find("SN")) != std::string::npos) {
         SN = ExtractNextTagValue_(line, &tag_position);
@@ -45,7 +47,8 @@ SamHeaderSQ::SamHeaderSQ(const std::string& line)
     }
 }
 
-std::string SamHeaderSQ::report() const {
+std::string SamHeaderSQ::report() const
+{
     std::string str = "SQ:\n";
     if (!SN.empty())
         str += "\tSN: " + SN + '\n';
@@ -61,3 +64,5 @@ std::string SamHeaderSQ::report() const {
         str += "\tLN: " + std::to_string(static_cast<int>(LN)) + '\n';
     return str;
 }
+
+}  // namespace gene

@@ -22,6 +22,8 @@
 
 #include "SamHeaderComponent.hpp"
 
+namespace gene {
+
 // Description:
 // Reference sequence dictionary. The order of @SQ lines defines the alignment
 // sorting order.
@@ -57,6 +59,8 @@ class SamHeaderSQ : public SamHeaderComponent {
 
     std::string report() const override;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_SAM_SAMHEADERSQ_HPP_
 

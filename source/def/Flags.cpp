@@ -16,6 +16,8 @@
 
 #include "Flags.hpp"
 
+namespace gene {
+
 const char Flags::kForwardAndReverseComplementsSearch[] = "double-ended";
 const char Flags::kCoupledQueries[] = "coupled";
 const char Flags::kRnaSequenceSearch[] = "rna-seq";
@@ -48,3 +50,5 @@ const char Flags::kIllumina1_5Suffix[] = "Illumina 1.5";
 const char Flags::kIllumina1_3Suffix[] = "Illumina 1.3";
 const char Flags::kSangerSuffix[] = "Sanger";
 const char Flags::kSolexaSuffix[] = "Solexa";
+
+}  // namespace gene

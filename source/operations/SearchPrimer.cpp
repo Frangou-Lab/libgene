@@ -19,6 +19,8 @@
 #include "../utils/StringUtils.hpp"
 #include "../utils/CppUtils.hpp"
 
+namespace gene {
+
 constexpr int kNumberOfIdDigits = 7;
 
 SearchPrimer::SearchPrimer(const std::string& seq,
@@ -270,3 +272,5 @@ const std::string& SearchPrimer::Complement()
     }
     return complement_;
 }
+
+}  // namespace gene

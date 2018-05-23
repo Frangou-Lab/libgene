@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <cstdint>
 
-namespace bmtls {
+namespace gene::bmtls {
 
 static inline uint8_t getUint8(const uint8_t arr[]) {
     return arr[0];
@@ -49,6 +49,6 @@ static inline uint64_t getUint64(const uint8_t arr[]) {
     uint64_t(uint8_t(arr[7])) << 56;
 }
 
-}  // namespace bmtls
+}  // namespace gene::bmtls
 
 #endif  // LIBGENE_FILE_ALIGNMENT_BAM_BAMUTILS_HPP_

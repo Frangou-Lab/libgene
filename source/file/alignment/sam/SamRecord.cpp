@@ -18,9 +18,13 @@
 
 #include "SamRecord.hpp"
 
+
 using std::string;
 
-SamRecord::SamRecord(const string& line) {
+namespace gene {
+
+SamRecord::SamRecord(const string& line)
+{
     auto nextToken = [](int64_t& previousTabPosition, const string& line) {
         int64_t tabPosition = line.find('\t', previousTabPosition + 1);
         int64_t temp = previousTabPosition;
@@ -52,3 +56,4 @@ SamRecord::SamRecord(const string& line) {
     QUAL = nextToken(tabPosition, line);
 }
 
+}  // namespace gene

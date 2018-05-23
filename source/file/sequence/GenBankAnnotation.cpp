@@ -19,6 +19,8 @@
 using std::string_view;
 using std::string;
 
+namespace gene {
+
 GenBankFeature::GenBankFeature(std::string_view feature_section)
 {
     // Format of a feature entry goes like this:
@@ -201,3 +203,5 @@ std::vector<std::string> GenBankAnnotation::MatchingFeatures(prim::Range range) 
     }
     return matching_features;
 }
+
+}  // namespace gene

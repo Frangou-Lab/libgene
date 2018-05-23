@@ -21,6 +21,8 @@
 #include "../../utils/StringUtils.hpp"
 #include "../../log/Logger.hpp"
 
+namespace gene {
+
 Splitter::Splitter(const std::string& input_path,
                    const std::string& output_path,
                    std::unique_ptr<CommandLineFlags>&& flags)
@@ -132,3 +134,5 @@ bool Splitter::Process()
     }
     return true;
 }
+
+}  // namespace gene

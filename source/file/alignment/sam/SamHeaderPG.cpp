@@ -18,7 +18,10 @@
 
 #include "SamHeaderPG.hpp"
 
-SamHeaderPG::SamHeaderPG(const std::string& line) {
+namespace gene {
+
+SamHeaderPG::SamHeaderPG(const std::string& line)
+{
     // Program version.
     std::string VN;
 
@@ -43,7 +46,8 @@ SamHeaderPG::SamHeaderPG(const std::string& line) {
     }
 }
 
-std::string SamHeaderPG::report() const {
+std::string SamHeaderPG::report() const
+{
     std::string str = "PG:\n";
     if (!ID.empty())
         str += "\tID: " + ID + '\n';
@@ -60,3 +64,5 @@ std::string SamHeaderPG::report() const {
 
     return str;
 }
+
+}  // namespace gene

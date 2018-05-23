@@ -26,6 +26,8 @@
 #include "SamHeaderRG.hpp"
 #include "SamHeaderPG.hpp"
 
+namespace gene {
+
 class SamHeader {
  public:
     SamHeader();
@@ -38,5 +40,7 @@ class SamHeader {
     std::vector<std::unique_ptr<SamHeaderPG>> pg;
     std::string comment;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_SAM_SAMHEADER_HPP_

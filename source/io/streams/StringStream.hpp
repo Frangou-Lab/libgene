@@ -19,8 +19,10 @@
 
 #include <string>
 
+namespace gene {
+
 class StringStream {
-protected:
+ protected:
     FILE *file_{nullptr};
     char buf_[BUFSIZ];
     int64_t pos_{0};
@@ -37,5 +39,7 @@ protected:
     virtual int64_t position() const noexcept;
     virtual int64_t length() const noexcept;
 };
+
+}  // namespace gene
 
 #endif  // StringStream_hpp

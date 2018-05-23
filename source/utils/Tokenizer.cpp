@@ -20,6 +20,8 @@
 #include <cassert>
 #include <type_traits>
 
+namespace gene {
+
 Tokenizer::Tokenizer(std::string_view text, char delimiter)
 : Tokenizer::Tokenizer(delimiter)
 {
@@ -130,3 +132,5 @@ bool Tokenizer::ReadNext()
     position_ = length;
     return true;
 }
+
+}  // namespace gene

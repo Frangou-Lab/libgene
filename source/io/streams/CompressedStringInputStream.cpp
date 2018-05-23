@@ -22,6 +22,8 @@
 #include "CompressedStringInputStream.hpp"
 #include "../../utils/MiscPrimitives.hpp"
 
+namespace gene {
+
 CompressedStringInputStream::CompressedStringInputStream(const std::string& file_path)
 : StringInputStream(file_path)
 {
@@ -124,3 +126,4 @@ int64_t CompressedStringInputStream::position() const noexcept
         return -1;
 }
 
+}  // namespace gene

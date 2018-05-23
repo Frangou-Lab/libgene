@@ -21,10 +21,14 @@
 
 #include "StringStream.hpp"
 
+namespace gene {
+
 class StringOutputStream : public StringStream {
  public:
-    StringOutputStream(const std::string& fileName);
-    static std::unique_ptr<StringOutputStream> StreamWithFileName(const std::string& fileName);
+    explicit StringOutputStream(const std::string& file_path);
+    
+    static std::unique_ptr<StringOutputStream>
+    StreamWithFileName(const std::string& file_path);
     
     void Write(const std::string& str);
     void WriteLine(const std::string& str);
@@ -32,5 +36,7 @@ class StringOutputStream : public StringStream {
     void WriteQuoted(const std::string& str);
     void Write(char c);
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_IO_STREAMS_STRING_OUTPUTSTREAM_HPP_

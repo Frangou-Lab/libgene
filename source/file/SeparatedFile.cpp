@@ -25,6 +25,8 @@
 #include "../utils/Tokenizer.hpp"
 #include "../utils/StringUtils.hpp"
 
+namespace gene {
+
 SeparatedFile::SeparatedFile(const std::string& path,
                              const std::unique_ptr<CommandLineFlags>& flags,
                              OpenMode mode,
@@ -194,3 +196,5 @@ std::vector<std::string> SeparatedFile::ReadNextRow()
 
     return next_row;
 }
+
+}  // namespace gene

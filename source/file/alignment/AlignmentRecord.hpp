@@ -17,11 +17,14 @@
 #ifndef LIBGENE_FILE_ALIGNMENT_ALIGNMENTRECORD_HPP_
 #define LIBGENE_FILE_ALIGNMENT_ALIGNMENTRECORD_HPP_
 
+namespace gene {
 
 class AlignmentRecord {
  public:
     AlignmentRecord() = default;
     virtual ~AlignmentRecord() = default;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_ALIGNMENTRECORD_HPP_

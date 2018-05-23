@@ -20,6 +20,8 @@
 #include "../utils/CppUtils.hpp"
 #include "../def/Flags.hpp"
 
+namespace gene {
+
 static std::vector<std::string> flagsWithParameters = {
     Flags::kInputFormat,
     Flags::kOutputFormat,
@@ -125,3 +127,5 @@ void CommandLineFlags::SetSetting(std::string key, int value)
 {
     SetSetting(key, std::to_string(value));
 }
+
+}  // namespace gene

@@ -23,6 +23,8 @@
 
 #include "sequence/SequenceFile.hpp"
 
+namespace gene {
+
 class TxtFile final : public SequenceFile {
  private:
     std::string last_read_string_;
@@ -42,5 +44,7 @@ class TxtFile final : public SequenceFile {
     static std::string defaultExtension();
     static std::string displayExtension();
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_TXTFILE_HPP_

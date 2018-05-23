@@ -23,14 +23,14 @@
 #include <string>
 #include <functional>
 
-namespace logger {
+namespace gene::logger {
 
 extern std::function<void(std::string)> logLambda;
 
-void Log(const char* format, ...);
+void Log(const char *format, ...);
 void Log(std::string message);
 
-}  // namespace logger
+}  // namespace gene::logger
 
 #endif
 

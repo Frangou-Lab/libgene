@@ -19,7 +19,10 @@
 #include "SamTag.hpp"
 #include "../bam/BamUtils.hpp"
 
-int SamTag::readTag(const uint8_t* start, int32_t tag_length) {
+namespace gene {
+
+int SamTag::readTag(const uint8_t* start, int32_t tag_length)
+{
     // int read_bytes_so_far = 0;
     // char tag[2];
     if (tag_length > 0) {
@@ -80,3 +83,4 @@ int SamTag::readTag(const uint8_t* start, int32_t tag_length) {
 //    return read_bytes_so_far;
 }
 
+}  // namespace gene

@@ -20,7 +20,11 @@
 #include <string>
 #include <string_view>
 
+namespace gene {
+
 std::string_view strstr_simd(std::string_view haystack,
                              const std::string& needle);
+
+}  // namespace gene
 
 #endif  /* strstr_simd_hpp */

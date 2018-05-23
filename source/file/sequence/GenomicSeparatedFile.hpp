@@ -26,6 +26,8 @@
 #include "../SeparatedFile.hpp"
 #include "SequenceFile.hpp"
 
+namespace gene {
+
 class GenomicSeparatedFile : public SequenceFile {
  protected:
     std::unique_ptr<SeparatedFile> file_;
@@ -62,5 +64,7 @@ class GenomicSeparatedFile : public SequenceFile {
 
     std::vector<std::string> getHeader() const;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_SEQUENCE_GENOMICSEPARATEDFILE_HPP

@@ -25,6 +25,8 @@
 #include "../file/alignment/sam/SamRecord.hpp"
 #include "../io/IOFile.hpp"
 
+namespace gene {
+
 class BgzfFile {
  private:
     struct BgzfHeader {
@@ -67,5 +69,7 @@ class BgzfFile {
     int64_t length() const noexcept;
     int64_t position() const noexcept;
 };
+
+}  // namespace gene
 
 #endif /* BgzfFile_hpp */

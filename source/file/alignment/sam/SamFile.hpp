@@ -26,6 +26,8 @@
 #include "SamHeader.hpp"
 #include "../../../flags/CommandLineFlags.hpp"
 
+namespace gene {
+
 class SamRecord;
 
 class SamFile : public AlignmentFile {
@@ -52,5 +54,7 @@ class SamFile : public AlignmentFile {
     int64_t position() const override;
     int64_t length() const override;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_SAM_SAMFILE_HPP_

@@ -26,16 +26,20 @@
 #include "../file/sequence/GenomicTsvFile.hpp"
 #include "../file/sequence/SequenceFile.hpp"
 
+namespace gene {
+
 static std::vector<std::string> finder_file_formats;
 
-std::vector<std::string> Extensions::kFinderDisplayInputFileFormats() {
+std::vector<std::string> Extensions::kFinderDisplayInputFileFormats()
+{
     return {FastaFile::displayExtension(),
             FastqFile::displayExtension(),
             GenomicCsvFile::displayExtension(),
             GenomicTsvFile::displayExtension()};
 }
 
-std::vector<std::string> Extensions::kFinderInputFileFormats() {
+std::vector<std::string> Extensions::kFinderInputFileFormats()
+{
     if (!finder_file_formats.empty())
         return finder_file_formats;
 
@@ -63,7 +67,8 @@ std::vector<std::string> Extensions::kFinderInputFileFormats() {
     return finder_file_formats;
 }
 
-std::vector<std::string> Extensions::kFinderReferenceFileFormats() {
+std::vector<std::string> Extensions::kFinderReferenceFileFormats()
+{
     auto extensions = FastaFile::extensions();
     extensions.push_back("gz");
 
@@ -74,6 +79,9 @@ std::vector<std::string> Extensions::kFinderReferenceFileFormats() {
     return extensions;
 }
 
-std::vector<std::string> Extensions::kInputQueriesFileFormat() {
+std::vector<std::string> Extensions::kInputQueriesFileFormat()
+{
     return {"txt"};
 }
+
+}  // namespace gene

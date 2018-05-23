@@ -24,6 +24,8 @@
 #include "../operations/filter/Filter.hpp"
 #include "../operations/SearchPrimer.hpp"
 
+namespace gene {
+
 enum class Strand {
     Forward,
     Reverse,
@@ -165,5 +167,7 @@ class FuzzySearch final {
 
     const int16_t max_error_count_;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_SEARCH_FUZZYSEARCH_HPP_

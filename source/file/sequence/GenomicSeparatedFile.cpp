@@ -26,6 +26,8 @@
 #include "../../def/Flags.hpp"
 #include "../../log/Logger.hpp"
 
+namespace gene {
+
 GenomicSeparatedFile::GenomicSeparatedFile(const std::string& path,
                                            const std::unique_ptr<CommandLineFlags>& flags,
                                            FileType type,
@@ -332,3 +334,5 @@ std::string GenomicSeparatedFile::fileName() const
 {
     return file_->fileName();
 }
+
+}  // namespace gene

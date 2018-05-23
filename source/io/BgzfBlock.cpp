@@ -19,6 +19,8 @@
 #include <cstring>
 #include <zlib.h>
 
+namespace gene {
+
 constexpr int kBgzfBlockMaxSize = 16 << 20;
 
 BgzfBlock::BgzfBlock(FILE* file,
@@ -81,3 +83,5 @@ BgzfBlock::~BgzfBlock() noexcept
     if (decompressed_data_)
         free(decompressed_data_);
 }
+
+}  // namespace gene

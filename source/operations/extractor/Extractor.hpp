@@ -29,6 +29,8 @@
 
 #include "ExtractorJob.hpp"
 
+namespace gene {
+
 class Extractor : public Operation {
  public:
     Extractor(ExtractorJob&& job);
@@ -72,5 +74,7 @@ class Extractor : public Operation {
     void SingleOutputFileExtract_(std::atomic<int64_t>& counter,
                                   std::atomic<int64_t>& extracted);
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_OPERATIONS_EXTRACTOR_HPP_

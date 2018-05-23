@@ -18,6 +18,9 @@
 #define LIBGENE_DEF_FILETYPE_HPP_
 
 #ifdef __cplusplus
+
+namespace gene {
+
 enum class FileType {
     Fasta,
     Fastq,
@@ -38,6 +41,8 @@ enum class FastqVariant {
     Solexa,
     Sanger
 };
+
+}  // namespace gene
 
 #else  // __cplusplus
 

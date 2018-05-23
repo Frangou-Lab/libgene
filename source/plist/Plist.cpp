@@ -26,8 +26,6 @@
 
 #include "any/any.hpp"
 
-namespace plist {
-
 typedef std::string string_type;
 typedef std::map<std::string, experimental::any> dictionary_type;
 typedef std::vector<experimental::any> array_type;
@@ -130,30 +128,32 @@ void writePlistXML(std::ostream& stream, const experimental::any& message)
     doc.save(stream);
 }
 
-void Serializer::writePlistXML(const std::string& plistPath,
-                               const experimental::any& message)
-{
-    std::ofstream stream(plistPath, std::ios::binary);
-    plist::writePlistXML(stream, message);
-    stream.close();
-}
-
 void readPlist(const char* byteArrayTemp, int64_t size, experimental::any& message)
 {
     const unsigned char *byteArray = reinterpret_cast<const unsigned char*>(byteArrayTemp);
     if (!byteArray || size == 0)
         throw std::runtime_error("Plist: Empty plist data");
-    
+
     // assume it's XML plist
     pugi::xml_document doc;
     pugi::xml_parse_result result = doc.load_buffer(byteArray, (size_t)size);
     if (!result)
         throw std::runtime_error(std::string("Plist: XML parsed with error ") + result.description());
-    
+
     pugi::xml_node rootNode = doc.child("plist").first_child();
     message = parse(rootNode);
 }
-    
+
+namespace gene::plist {
+
+void Serializer::writePlistXML(const std::string& plistPath,
+                               const experimental::any& message)
+{
+    std::ofstream stream(plistPath, std::ios::binary);
+    ::writePlistXML(stream, message);
+    stream.close();
+}
+
 void Serializer::readPlist(std::istream& stream, experimental::any& message)
 {
     int64_t start = stream.tellg();
@@ -163,11 +163,13 @@ void Serializer::readPlist(std::istream& stream, experimental::any& message)
         stream.seekg(0, std::ifstream::beg);
         std::vector<char> buffer(size);
         stream.read(static_cast<char *>(&buffer[0]), size);
-        plist::readPlist(&buffer[0], size, message);
+        ::readPlist(&buffer[0], size, message);
     } else {
         throw std::runtime_error("Can't read zero length data");
     }
 }
+
+} // namespace gene::plist
 
 experimental::any parse(pugi::xml_node& node)
 {
@@ -223,5 +225,3 @@ array_type parseArray(pugi::xml_node& node)
     
     return array;
 }
-
-} // namespace plist

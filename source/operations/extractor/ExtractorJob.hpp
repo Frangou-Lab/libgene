@@ -21,6 +21,8 @@
 #include <string>
 #include <memory>
 
+namespace gene {
+
 class CommandLineFlags;
 
 struct ExtractorJob {
@@ -48,5 +50,7 @@ struct ExtractorJob {
     std::vector<std::pair<std::string, std::string>> output_paths;
     std::vector<std::string> queries;
 };
+
+}  // namespace gene
 
 #endif /* ExtractorJob_hpp */

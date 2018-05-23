@@ -17,6 +17,8 @@
 #include "Operation.hpp"
 #include "../log/Logger.hpp"
 
+namespace gene {
+
 Operation::Operation(std::unique_ptr<CommandLineFlags>&& flags)
 : flags_(std::move(flags))
 {
@@ -31,3 +33,5 @@ bool Operation::Process()
     }
     return true;
 }
+
+}  // namespace gene

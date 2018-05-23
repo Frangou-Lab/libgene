@@ -24,6 +24,8 @@
 #include "FuzzySearch.hpp"
 #include "strstr_simd.hpp"
 
+namespace gene {
+
 FuzzySearch::FuzzySearch(int8_t errorCount) : max_error_count_(errorCount)
 {
 
@@ -630,3 +632,5 @@ std::pair<int64_t, int64_t> FuzzySearch::RightmostPosition_(const std::string &q
     }
     return {std::string::npos, 0LL};
 }
+
+}  // namespace gene

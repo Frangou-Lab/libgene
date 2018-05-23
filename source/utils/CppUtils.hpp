@@ -25,10 +25,7 @@
 #include "../def/FileType.hpp"
 #include "../flags/CommandLineFlags.hpp"
 
-#define BEGIN_NAMESPACE_LIBGENE_UTILS_ namespace utils {
-#define END_NAMESPACE_LIBGENE_UTILS_ }
-
-BEGIN_NAMESPACE_LIBGENE_UTILS_
+namespace gene::utils {
 
 std::string ConstructOutputNameWithFile(std::string inputFileName,
                                         FileType type,
@@ -49,7 +46,10 @@ template <typename C, typename F, typename = void>
 struct has_find : public std::false_type {};
 
 template <typename C, typename R, typename... A>
-struct has_find<C, R(A...), typename std::enable_if<std::is_same<R, void>::value || std::is_convertible<decltype(std::declval<C>().find(std::declval<A>()...)), R>::value>::type> : public std::true_type {};
+struct has_find<C, R(A...),
+    typename std::enable_if<std::is_same<R, void>::value ||
+    std::is_convertible<decltype(std::declval<C>().find(std::declval<A>()...)), R>::value>::type> : public std::true_type {
+};
 
 template<typename ContainerT, typename ElemT>
 constexpr bool ContainerHasElement_No_find_(const ContainerT& container, const ElemT& elem)
@@ -161,9 +161,6 @@ FastqVariant FormatNameToVariant(const std::string& format);
 std::string FastqVariantToSuffix(FastqVariant variant);
 std::vector<std::string> LoadQueriesFromFile(std::string path);
 
-END_NAMESPACE_LIBGENE_UTILS_
+}  // namespace gene::utils
 
-#undef BEGIN_NAMESPACE_LIBGENE_UTILS_
-#undef END_NAMESPACE_LIBGENE_UTILS_
-
-#endif /* CppUtils_hpp */
+#endif // LIBGENE_UTILS_CPPUTILS_HPP_

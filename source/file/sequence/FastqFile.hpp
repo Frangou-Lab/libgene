@@ -24,6 +24,8 @@
 #include "../../file/sequence/SequenceFile.hpp"
 #include "../../flags/CommandLineFlags.hpp"
 
+namespace gene {
+
 class FastqFile final : public SequenceFile {
  private:
     char def_quality_;
@@ -45,5 +47,7 @@ class FastqFile final : public SequenceFile {
     static std::string displayExtension();
     static std::vector<std::string> extensions();
 };
+
+}  // namespace gene
 
 #endif /* FastqFile_hpp */

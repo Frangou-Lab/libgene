@@ -24,6 +24,8 @@
 #include "TxtFile.hpp"
 #include "../log/Logger.hpp"
 
+namespace gene {
+
 TxtFile::TxtFile(const std::string& path,
                  const std::unique_ptr<CommandLineFlags>& flags,
                  OpenMode mode)
@@ -72,3 +74,5 @@ bool TxtFile::isValidGeneFile() const
 {
     return false;
 }
+
+}  // namespace gene

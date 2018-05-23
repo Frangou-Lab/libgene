@@ -19,6 +19,8 @@
 
 #include <string>
 
+namespace gene {
+
 class FinderRecord final {
  public:
     std::string id;
@@ -40,5 +42,7 @@ class FinderRecord final {
     std::string downstream_seq;
     std::string internal_seq;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_FINDER_FINDERRECORD_HPP_

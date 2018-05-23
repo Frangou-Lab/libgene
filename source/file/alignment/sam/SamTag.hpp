@@ -21,6 +21,8 @@
 #include <cstdint>
 #include <map>
 
+namespace gene {
+
 class SamTag {
  private:
     union value {
@@ -47,5 +49,7 @@ class SamTag {
     std::map<std::string, std::string> stringTags;
     std::map<std::string, double> doubleTags;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_SAM_SAMTAG_HPP_

@@ -18,7 +18,10 @@
 
 #include "SamHeaderRG.hpp"
 
-SamHeaderRG::SamHeaderRG(const std::string& line) {
+namespace gene {
+
+SamHeaderRG::SamHeaderRG(const std::string& line)
+{
     int64_t tag_position = std::string::npos;
     if ((tag_position = line.find("ID")) != std::string::npos) {
         ID = ExtractNextTagValue_(line, &tag_position);
@@ -61,7 +64,8 @@ SamHeaderRG::SamHeaderRG(const std::string& line) {
     }
 }
 
-std::string SamHeaderRG::report() const {
+std::string SamHeaderRG::report() const
+{
     std::string str = "RG:\n";
     if (!ID.empty())
         str += "\tID: " + ID + '\n';
@@ -90,3 +94,5 @@ std::string SamHeaderRG::report() const {
 
     return str;
 }
+
+}  // namespace gene

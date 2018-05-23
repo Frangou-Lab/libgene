@@ -22,6 +22,8 @@
 #include "FastaFile.hpp"
 #include "../../log/Logger.hpp"
 
+namespace gene {
+
 FastaFile::FastaFile(const std::string& path,
                      const std::unique_ptr<CommandLineFlags>& flags,
                      OpenMode mode)
@@ -137,3 +139,5 @@ bool FastaFile::isValidGeneFile() const
 {
     return true;
 }
+
+}  // namespace gene

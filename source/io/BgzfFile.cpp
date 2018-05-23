@@ -22,6 +22,8 @@
 #include <cstdlib>
 #include <zlib.h>
 
+namespace gene {
+
 constexpr int32_t kGzipHeaderSize = 12;
 constexpr int32_t kExtraHeaderSize = 6;
 
@@ -139,3 +141,5 @@ BgzfFile::~BgzfFile() noexcept
         fclose(file_);
     }
 }
+
+}  // namespace gene

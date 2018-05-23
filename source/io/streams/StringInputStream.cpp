@@ -22,6 +22,8 @@
 #include "PlainStringInputStream.hpp"
 #include "../../utils/StringUtils.hpp"
 
+namespace gene {
+
 std::unique_ptr<StringInputStream>
 StringInputStream::StreamWithFileName(const std::string& file_path)
 {
@@ -43,3 +45,4 @@ bool StringInputStream::empty() const
     return feof(file_) != 0 && pos_ == read_;
 }
 
+}  // namespace gene

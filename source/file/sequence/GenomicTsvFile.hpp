@@ -21,15 +21,20 @@
 
 #include <string>
 
-class GenomicTsvFile : public GenomicSeparatedFile
-{
-public:
-    GenomicTsvFile(const std::string& path, const std::unique_ptr<CommandLineFlags>& flags, OpenMode mode);
+namespace gene {
+
+class GenomicTsvFile : public GenomicSeparatedFile {
+ public:
+    GenomicTsvFile(const std::string& path,
+                   const std::unique_ptr<CommandLineFlags>& flags,
+                   OpenMode mode);
     virtual ~GenomicTsvFile() = default;
     
     static std::string defaultExtension();
     static std::string displayExtension();
     static std::vector<std::string> extensions();
 };
+
+}  // namespace gene
 
 #endif /* GenomicTsvFile_hpp */

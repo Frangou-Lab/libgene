@@ -18,6 +18,8 @@
 
 #include <iostream>
 
+namespace gene {
+
 BKTree::Node::Node(const BarcodeRecord& barcode) : barcode_ref{barcode}
 {
 }
@@ -255,3 +257,5 @@ BarcodeRecord::BarcodeRecord(std::vector<std::string>&& components)
         else if (i == 3) barcode2    = current_str;
     }
 }
+
+}  // namespace gene

@@ -26,6 +26,8 @@
 #include "../../utils/CppUtils.hpp"
 #include "../../def/Flags.hpp"
 
+namespace gene {
+
 SequenceFile::SequenceFile(const std::string& path,
                            const std::unique_ptr<CommandLineFlags>& flags,
                            FileType type,
@@ -93,9 +95,10 @@ std::unique_ptr<SequenceFile> SequenceFile::FileWithName(const std::string& name
 }
 
 //
-// Sometimes FASTQ (& FASTA) files come in pairs which contain sequences read from different
-// directions of the same sequence. This provides additional information about positional realtions
-// of corresponding reads. It is important to keep these sequences separated after demultiplexing.
+// Sometimes FASTQ (& FASTA) files come in pairs which contain sequences read
+// from different directions of the same sequence. This provides additional
+// information about positional realtions of corresponding reads. It is
+// important to keep these sequences separated after demultiplexing.
 //
 bool SequenceFile::AttemptToDetermineFileKind_()
 {
@@ -154,3 +157,5 @@ std::vector<std::string> SequenceFile::defaultFileFormats()
             GenomicTsvFile::defaultExtension(),
             GenBankFile::defaultExtension()};
 }
+
+}  // namespace gene

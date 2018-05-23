@@ -21,10 +21,7 @@
 
 #include "StringUtils.hpp"
 
-#define BEGIN_NAMESPACE_LIBGENE_UTILS_ namespace utils {
-#define END_NAMESPACE_LIBGENE_UTILS_ }
-
-BEGIN_NAMESPACE_LIBGENE_UTILS_
+namespace gene::utils {
 
 std::string InsertSuffixBeforePathExtension(std::string path, std::string suffix)
 {
@@ -164,4 +161,4 @@ std::string PaddedToLengthString(int number, int length)
     return std::string(buffer);
 }
 
-END_NAMESPACE_LIBGENE_UTILS_
+}  // namespace gene::utils

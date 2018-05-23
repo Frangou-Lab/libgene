@@ -18,6 +18,8 @@
 
 #include <stack>
 
+namespace gene {
+
 Trie::Trie()
 {
     root = new TrieNode();
@@ -39,7 +41,8 @@ bool Trie::Add(const std::string& s)
     }
 
     if (branched_at_least_once) {
-        // The last node is different, it contains an index of the original sequence
+        // The last node is different, it contains an index of the
+        // original sequence
         iter->index = new int(count_++);
         return true;
     }
@@ -61,3 +64,5 @@ Trie::~Trie()
         delete node;
     }
 }
+
+}  // namespace gene

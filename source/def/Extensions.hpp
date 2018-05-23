@@ -20,6 +20,8 @@
 #include <string>
 #include <vector>
 
+namespace gene {
+
 class Extensions {
  public:
     // Formats that are displayed in a dropdown menu
@@ -35,5 +37,7 @@ class Extensions {
     // (.txt)
     static std::vector<std::string> kInputQueriesFileFormat();
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_DEF_EXTENSIONS_HPP_

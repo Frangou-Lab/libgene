@@ -24,6 +24,8 @@
 #include "SequenceFile.hpp"
 #include "../../flags/CommandLineFlags.hpp"
 
+namespace gene {
+
 class GenBankFile final : public SequenceFile {
  public:
     GenBankFile(const std::string& path,
@@ -43,5 +45,7 @@ class GenBankFile final : public SequenceFile {
  private:
     std::string last_read_line_;
 };
+
+}  // namespace gene
 
 #endif /* GenBankFile_hpp */

@@ -24,11 +24,12 @@
 
 #include "../def/ColumnType.h"
 
+namespace gene {
+
 class GroupWrapperCpp;
 
-class ColumnTypeWrapperCpp
-{
-public:
+class ColumnTypeWrapperCpp {
+ public:
     typedef std::shared_ptr<ColumnTypeWrapperCpp> ColumnTypeWrapperPtr;
     
     std::string description;
@@ -44,13 +45,12 @@ public:
                                                               enum ColumnType type);
 };
 
-class GroupWrapperCpp
-{
-private:
+class GroupWrapperCpp {
+ private:
     std::string group_name_;
     std::string color_;
     
-public:
+ public:
     std::string GroupName() const;
     std::string Color() const;
     std::map<std::string, std::vector<std::string>> Dictionary() const;
@@ -62,13 +62,12 @@ public:
     static std::unique_ptr<GroupWrapperCpp> GroupWithName(std::string groupName, std::string color);
 };
 
-class ColumnTypesConfigurationCpp
-{
-private:
+class ColumnTypesConfigurationCpp {
+ private:
     std::vector<std::shared_ptr<ColumnTypeWrapperCpp>> m_columns;
     std::vector<std::shared_ptr<GroupWrapperCpp>> m_groups;
     
-public:
+ public:
     void saveConfigurationOfColumnTypesForFile(std::string inputFileName);
     void readConfigurationOfColumnTypesForFile(std::string inputFileName);
     std::shared_ptr<ColumnTypeWrapperCpp> getColumnById(int columnId);
@@ -81,5 +80,7 @@ public:
     std::vector<std::shared_ptr<ColumnTypeWrapperCpp>> Columns() const;
     std::shared_ptr<ColumnTypeWrapperCpp> IDColumn() const;
 };
+
+}  // namespace gene
 
 #endif /* ColumnTypesConfigurationCpp_hpp */

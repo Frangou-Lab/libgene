@@ -23,6 +23,8 @@
 
 #include "../io/IOFile.hpp"
 
+namespace gene {
+
 class CommandLineFlags {
  protected:
     std::map<std::string, std::string> dict_;
@@ -50,5 +52,7 @@ class CommandLineFlags {
 
     bool verbose;
 };
+
+}  // namespace gene
 
 #endif /* CommandLineFlags_hpp */

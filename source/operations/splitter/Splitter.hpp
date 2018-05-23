@@ -24,6 +24,8 @@
 #include "../Operation.hpp"
 #include "../../flags/CommandLineFlags.hpp"
 
+namespace gene {
+
 class Splitter final : public Operation {
  private:
     SequenceFile::SequenceFilePtr inFile;
@@ -43,5 +45,7 @@ class Splitter final : public Operation {
              std::unique_ptr<CommandLineFlags>&& flags);
     bool Process() override;
 };
+
+}  // namespace gene
 
 #endif /* Splitter_h */

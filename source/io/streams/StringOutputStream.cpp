@@ -21,6 +21,8 @@
 
 #include "../../utils/MiscPrimitives.hpp"
 
+namespace gene {
+
 static const char kNewlineSequence[] = "\n";
 
 StringOutputStream::StringOutputStream(const std::string& fileName)
@@ -71,3 +73,5 @@ void StringOutputStream::Write(char c)
     fputc(c, file_);
     ++length_;
 }
+
+}  // namespace gene

@@ -23,6 +23,8 @@
 
 using std::string_view;
 
+namespace gene {
+
 GenBankFile::GenBankFile(const std::string& path,
                          const std::unique_ptr<CommandLineFlags>& flags,
                          OpenMode mode)
@@ -135,3 +137,5 @@ bool GenBankFile::isValidGeneFile() const
 {
     return true;
 }
+
+}  // namespace gene

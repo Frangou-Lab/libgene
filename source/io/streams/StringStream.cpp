@@ -19,6 +19,8 @@
 
 #include <cstdio>
 
+namespace gene {
+
 StringStream::StringStream(const std::string& file_path)
 : path_(file_path)
 {
@@ -52,3 +54,4 @@ std::string StringStream::path() const
     return path_;
 }
 
+}  // namespace gene

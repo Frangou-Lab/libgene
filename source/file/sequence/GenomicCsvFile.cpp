@@ -16,6 +16,8 @@
 
 #include "GenomicCsvFile.hpp"
 
+namespace gene {
+
 GenomicCsvFile::GenomicCsvFile(const std::string& path, const std::unique_ptr<CommandLineFlags>& flags,
                                OpenMode mode)
 : GenomicSeparatedFile(path, flags, FileType::Csv, mode, ',')
@@ -37,3 +39,5 @@ std::string GenomicCsvFile::displayExtension()
 {
     return "csv";
 }
+
+}  // namespace gene

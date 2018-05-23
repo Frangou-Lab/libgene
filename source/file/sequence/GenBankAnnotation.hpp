@@ -23,6 +23,8 @@
 
 #include "../../utils/MiscPrimitives.hpp"
 
+namespace gene {
+
 enum class RangeKind {
     Complete,
     Prime5,
@@ -46,10 +48,13 @@ class GenBankFeature {
     std::string report_info() const;
     
  private:
-    std::string ExtractValueByTag_(const std::string& tag, std::string_view view);
+    std::string ExtractValueByTag_(const std::string& tag,
+                                   std::string_view view);
     void RemoveJunkCharacters_(std::string& s, bool leave_one_space) const;
-    void ParseRanges_(std::string_view ranges_section_view, bool complement = false);
-    prim::Range RangeFromStringView_(std::string_view view_of_pair, bool complement);
+    void ParseRanges_(std::string_view ranges_section_view,
+                      bool complement = false);
+    prim::Range RangeFromStringView_(std::string_view view_of_pair,
+                                     bool complement);
     
     std::string type_;
     std::string gene_;
@@ -71,5 +76,7 @@ class GenBankAnnotation {
  private:
     std::vector<GenBankFeature> features_;
 };
+
+}  // namespace gene
 
 #endif /* GenBankAnnotation_hpp */

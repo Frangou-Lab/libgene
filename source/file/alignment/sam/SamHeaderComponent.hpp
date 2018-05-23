@@ -20,6 +20,8 @@
 #include <string>
 #include <cassert>
 
+namespace gene {
+
 class SamHeaderComponent {
  public:
     virtual ~SamHeaderComponent() = default;
@@ -38,5 +40,7 @@ class SamHeaderComponent {
     }
     virtual std::string report() const = 0;
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_FILE_ALIGNMENT_SAM_SAMHEADERCOMPONENT_HPP_

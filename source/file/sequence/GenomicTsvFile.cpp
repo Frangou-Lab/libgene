@@ -20,6 +20,8 @@
 #include <vector>
 #include <memory>
 
+namespace gene {
+
 GenomicTsvFile::GenomicTsvFile(const std::string& path,
                                const std::unique_ptr<CommandLineFlags>& flags,
                                OpenMode mode)
@@ -42,3 +44,5 @@ std::string GenomicTsvFile::displayExtension()
 {
     return "tsv";
 }
+
+}  // namespace gene

@@ -20,6 +20,8 @@
 #include <mutex>
 #include <condition_variable>
 
+namespace gene {
+
 class ThreadBarrier {
  public:
     constexpr ThreadBarrier() noexcept = default;
@@ -54,5 +56,7 @@ class ThreadBarrier {
     int count_;
     int generation_{0};
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_UTILS_CONCURRENCYSUPPORT_HPP

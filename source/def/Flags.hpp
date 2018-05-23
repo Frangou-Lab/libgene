@@ -17,6 +17,8 @@
 #ifndef LIBGENE_DEF_FLAGS_HPP_
 #define LIBGENE_DEF_FLAGS_HPP_
 
+namespace gene {
+
 class Flags {
  public:
     // *Checkbox* - "Search both strands"
@@ -108,5 +110,7 @@ class Flags {
     static const char kSangerSuffix[];
     static const char kSolexaSuffix[];
 };
+
+}  // namespace gene
 
 #endif  // LIBGENE_DEF_FLAGS_HPP_

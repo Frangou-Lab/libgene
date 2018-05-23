@@ -31,13 +31,16 @@
 (byte & 0x04 ? '1' : '0'), \
 (byte & 0x02 ? '1' : '0'), \
 (byte & 0x01 ? '1' : '0')
-#endif
 
-static std::string_view match_by_pairs_sse2(std::string_view haystack, const char pattern[2]);
+#endif  // DEBUG
+
+static std::string_view match_by_pairs_sse2(std::string_view haystack,
+                                            const char pattern[2]);
 
 #if 0
-static const char* match_by_quads_avx2(const char* haystack, const char pattern[4]);
-#endif
+static const char* match_by_quads_avx2(const char* haystack,
+                                       const char pattern[4]);
+#endif  // 0
 
 #ifdef DEBUG
 /*
@@ -61,8 +64,7 @@ void Print_v256i_epi8(__m256i v)
     fflush(stderr);
 }
 /* */
-
-#endif
+#endif  // DEBUG
 
 #ifdef _MSC_VER
 int ffs(uint32_t s)
@@ -71,8 +73,7 @@ int ffs(uint32_t s)
         return 0;
     
     int bit_position = 0;
-    while (s)
-    {
+    while (s) {
         bit_position++;
         s <<= 1;
     }
@@ -80,10 +81,12 @@ int ffs(uint32_t s)
 }
 #endif // _MSC_VER
 
-std::string_view strstr_simd(std::string_view haystack, const std::string& needle)
+namespace gene {
+
+std::string_view strstr_simd(std::string_view haystack,
+                             const std::string& needle)
 {
-    if (needle.size() < 2)
-    {
+    if (needle.size() < 2) {
         int64_t position = haystack.find(needle);
         if (position != std::string::npos)
             return haystack.substr(position, needle.size());
@@ -100,18 +103,21 @@ std::string_view strstr_simd(std::string_view haystack, const std::string& needl
     return std::string_view();
 }
 
-static std::string_view match_by_pairs_sse2(std::string_view haystack, const char pattern[2])
+}  // namespace gene
+
+static std::string_view match_by_pairs_sse2(std::string_view haystack,
+                                            const char pattern[2])
 {
     const __m128i zero_mask = _mm_setzero_si128();
     const __m128i c0_pattern = _mm_set1_epi8(pattern[0]);
     const __m128i c1_pattern = _mm_set1_epi8(pattern[1]);
     uint8_t unaligned_length = 0x0F & (intptr_t)haystack.data(); // a part of the string, which
-                                                                  // requires special treatment.
+                                                                 // requires special treatment.
 
-    uint16_t pair = *(uint16_t*)(pattern);
+    uint16_t pair = *(uint16_t *)(pattern);
     uint32_t eq_zero_mask, match_mask;
-    if (unaligned_length != 0)
-    {
+
+    if (unaligned_length != 0) {
         __m128i unaligned_chars = _mm_load_si128((const __m128i*)(haystack.data() - unaligned_length));
         eq_zero_mask = _mm_movemask_epi8(_mm_cmpeq_epi8(zero_mask, unaligned_chars));
         eq_zero_mask >>= unaligned_length;
@@ -121,45 +127,37 @@ static std::string_view match_by_pairs_sse2(std::string_view haystack, const cha
         match_mask >>= unaligned_length;
         match_mask &= ~eq_zero_mask & (eq_zero_mask - 1);
         
-        if (match_mask)
-        {
+        if (match_mask) {
             int first_bit_set = ffs(match_mask);
             return haystack.substr(first_bit_set - 1);
         }
         if (eq_zero_mask)
-        {
             return std::string_view();
-        }
         
-        // Store a copy because we can't increase the length of the string_view after we've shrunk it
+        // Store a copy because we can't increase the length of the string_view
+        // after we've shrunk it
         std::string_view temp_copy = haystack;
-        
         haystack.remove_prefix(16 - unaligned_length);
         
         if (*((uint16_t*)(haystack.data() - 1)) == pair)
             return temp_copy.substr(15 - unaligned_length); // Used to be: '(16 - unaligned_length) - 1'
     }
     
-    for (;;)
-    {
+    for (;;) {
         __m128i next16_chars = _mm_load_si128((const __m128i*)haystack.data());
         eq_zero_mask = _mm_movemask_epi8(_mm_cmpeq_epi8(zero_mask, next16_chars));
         
         match_mask =  _mm_movemask_epi8(_mm_cmpeq_epi8(c0_pattern, next16_chars));
         match_mask &= _mm_movemask_epi8(_mm_cmpeq_epi8(c1_pattern, next16_chars)) >> 1;
         match_mask &= ~eq_zero_mask & (eq_zero_mask - 1);
-        if (match_mask)
-        {
+        if (match_mask) {
             int first_bit_set = ffs(match_mask);
             return haystack.substr(first_bit_set - 1);
         }
         if (eq_zero_mask)
-        {
             return std::string_view();
-        }
         
         std::string_view copy = haystack;
-        
         haystack.remove_prefix(16);
         
         if (*((uint16_t*)(haystack.data() - 1)) == pair)

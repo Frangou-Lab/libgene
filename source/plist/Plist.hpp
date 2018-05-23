@@ -23,8 +23,7 @@
 #include "pugixml.hpp"
 #include "any/any.hpp"
 
-namespace plist
-{
+namespace gene::plist {
 
 class Serializer {
 public:
@@ -34,6 +33,6 @@ public:
                           experimental::any& message);
 };
     
-}  // namespace plist
+}  // namespace gene::plist
 
 #endif /* Plist_hpp */

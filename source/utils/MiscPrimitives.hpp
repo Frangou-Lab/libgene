@@ -17,13 +17,10 @@
 #ifndef LIBGENE_UTILS_MISCPRIMITIVES_H_
 #define LIBGENE_UTILS_MISCPRIMITIVES_H_
 
-#define BEGIN_NAMESPACE_PRIMITIVES_ namespace prim {
-#define END_NAMESPACE_PRIMITIVES_ }
-
 #include <string>
 #include <stdexcept>
 
-BEGIN_NAMESPACE_PRIMITIVES_
+namespace gene::prim {
 
 /*
 
@@ -103,9 +100,6 @@ class UserVisibleError : public std::runtime_error {
     : UserVisibleError(error.what()) {}
 };
 
-END_NAMESPACE_PRIMITIVES_
-
-#undef BEGIN_NAMESPACE_PRIMITIVES_
-#undef END_NAMESPACE_PRIMITIVES_
+}  // namespace gene::prim
 
 #endif  // LIBGENE_UTILS_MISCPRIMITIVES_H_
