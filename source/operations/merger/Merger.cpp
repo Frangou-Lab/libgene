@@ -19,13 +19,20 @@
 
 #include "Merger.hpp"
 #include "../../log/Logger.hpp"
+#include "../../file/sequence/SequenceFile.hpp"
 
 namespace gene {
+
+template <int ThrottleCount = 1024 /* for some operations this value is way too small */>
+bool HasToUpdateProgress_(int64_t count)
+{
+    return (count % ThrottleCount) == 0;
+}
 
 Merger::Merger(std::vector<std::string> input_paths,
                std::string output_path,
                std::unique_ptr<CommandLineFlags>&& flags)
-: Operation(std::move(flags)),
+: flags_(std::move(flags)),
   inputFilePaths(input_paths),
   outputPath(output_path)
 {
@@ -57,8 +64,10 @@ bool Merger::Init_()
 
 bool Merger::Process()
 {
-    if (!Operation::Process())
+    if (!Init_()) {
+        PrintfLog("Can't proceed further. Aborting operation.");
         return false;
+    }
     
     if (flags_->verbose)
         PrintfLog("Merging into ->%s(%s)\n", outFile->filePath().c_str(), outFile->strFileType().c_str());

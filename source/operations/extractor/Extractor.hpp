@@ -23,24 +23,26 @@
 #include <mutex>
 #include <cstdint>
 
-#include "../../file/sequence/SequenceFile.hpp"
-#include "../../operations/Operation.hpp"
-#include "../../flags/CommandLineFlags.hpp"
-
 #include "ExtractorJob.hpp"
 
 namespace gene {
 
-class Extractor : public Operation {
+class CommandLineFlags;
+class SequenceFile;
+class SequenceRecord;
+
+class Extractor {
  public:
     Extractor(ExtractorJob&& job);
-
-    bool Process() override;
+    bool Process();
+    std::function<bool(float)> update_progress_callback;
 
  private:
+    typedef std::unique_ptr<SequenceFile> SequenceFilePtr;
     // '.second' can be nullptr if the input files are not paired
     typedef std::pair<SequenceFilePtr, SequenceFilePtr> PairOfFilePtrs;
 
+    std::unique_ptr<CommandLineFlags> flags_;
     std::vector<PairOfFilePtrs> input_files_;
 
     SequenceFilePtr output_file_;
@@ -62,7 +64,7 @@ class Extractor : public Operation {
     std::mutex write_mutex_;
     std::map<std::string, std::unique_ptr<std::mutex>> demultiplexed_write_mutexes_;
 
-    bool Init_() override;
+    bool Init_();
     void FlushThreadLocalBuffer_(std::vector<SequenceRecord>& buffer);
     void FlushThreadLocalBuffer_(const std::string& key,
                                  std::vector<std::pair<SequenceRecord, SequenceRecord>>& buffer);

@@ -19,16 +19,25 @@
 #include "Converter.hpp"
 #include "../../utils/StringUtils.hpp"
 #include "../../utils/CppUtils.hpp"
+#include "../../def/Flags.hpp"
 #include "../../file/alignment/sam/SamRecord.hpp"
+#include "../../file/alignment/AlignmentFile.hpp"
+#include "../../file/sequence/SequenceFile.hpp"
 #include "../../file/sequence/SequenceRecord.hpp"
 #include "../../log/Logger.hpp"
 
 namespace gene {
 
+template <int ThrottleCount = 1024 /* for some operations this value is way too small */>
+bool HasToUpdateProgress_(int64_t count)
+{
+    return (count % ThrottleCount) == 0;
+}
+
 Converter::Converter(const std::vector<std::string>& input_paths,
                      const std::string& output_path,
                      std::unique_ptr<CommandLineFlags>&& flags)
-: Operation(std::move(flags)), inputPaths(input_paths), outputFilePath(output_path), totalSizeInBytes(0)
+: flags_(std::move(flags)), inputPaths(input_paths), outputFilePath(output_path), totalSizeInBytes(0)
 {
     bool hasInputFormatSet = (flags_->GetSetting(Flags::kInputFormat) != nullptr);
     auto outputFormat = *flags_->GetSetting(Flags::kOutputFormat);
@@ -58,19 +67,19 @@ bool Converter::Init_()
             auto inFile = SequenceFile::FileWithName(filePath, flags_, OpenMode::Read);
             if (inFile) {
                 totalSizeInBytes += inFile->length();
-                sequenceInputFiles.push_back(std::move(inFile));
+                sequence_input_files_.push_back(std::move(inFile));
             }
         } else {
             auto inFile = AlignmentFile::FileWithName(filePath, flags_, OpenMode::Read);
             if (inFile) {
                 totalSizeInBytes += inFile->length();
-                alignmentInputFiles.push_back(std::move(inFile));
+                alignment_input_files_.push_back(std::move(inFile));
             }
         }
     }
     
-    if (!((sequenceInputFiles.empty() || sequenceInputFiles[0]->isValidGeneFile()) &&
-          (alignmentInputFiles.empty() || alignmentInputFiles[0]->isValidAlignmentFile()))) {
+    if (!((sequence_input_files_.empty() || sequence_input_files_[0]->isValidGeneFile()) &&
+          (alignment_input_files_.empty() || alignment_input_files_[0]->isValidAlignmentFile()))) {
         PrintfLog("Input file has an invalid format\n");
         return false;
     }
@@ -83,7 +92,7 @@ bool Converter::Init_()
                                                             "-converted");
     }
     
-    if (!(outFile = SequenceFile::FileWithName(outputFilePath, flags_, OpenMode::Write))) {
+    if (!(output_file_ = SequenceFile::FileWithName(outputFilePath, flags_, OpenMode::Write))) {
         PrintfLog("Can't create output file\n");
         return false;
     }
@@ -92,13 +101,15 @@ bool Converter::Init_()
 
 bool Converter::Process()
 {
-    if (!Operation::Process())
+    if (!Init_()) {
+        PrintfLog("Can't proceed further. Aborting operation.");
         return false;
-    
-    if (flags_->verbose && !sequenceInputFiles.empty()) {
-        PrintfLog("Converting %s(%s) -> %s(%s)\n", sequenceInputFiles[0]->filePath().c_str(),
-               sequenceInputFiles[0]->strFileType().c_str(), outFile->filePath().c_str(),
-               outFile->strFileType().c_str());
+    }
+
+    if (flags_->verbose && !sequence_input_files_.empty()) {
+        PrintfLog("Converting %s(%s) -> %s(%s)\n", sequence_input_files_[0]->filePath().c_str(),
+               sequence_input_files_[0]->strFileType().c_str(), output_file_->filePath().c_str(),
+               output_file_->strFileType().c_str());
     }
     
     SequenceRecord record;
@@ -106,10 +117,10 @@ bool Converter::Process()
     int64_t counter = 0;
     int64_t bytesProcessed = 0;
 
-    for (const auto& inputFile : sequenceInputFiles) {
-        while (!(record = inputFile->Read()).Empty()) {
+    for (const auto& input_file : sequence_input_files_) {
+        while (!(record = input_file->Read()).Empty()) {
             if (HasToUpdateProgress_(counter) && update_progress_callback) {
-                bool hasToCancelOperation = update_progress_callback((inputFile->position() + bytesProcessed)/static_cast<float>(totalSizeInBytes*100.0));
+                bool hasToCancelOperation = update_progress_callback((input_file->position() + bytesProcessed)/static_cast<float>(totalSizeInBytes*100.0));
                 if (hasToCancelOperation)
                     return true;
             }
@@ -118,13 +129,13 @@ bool Converter::Process()
             if (fastqFormatConversion)
                 record.ShiftQuality(inputFastqVariant, outputFastqVariant);
             
-            outFile->Write(record);
+            output_file_->Write(record);
         }
-        bytesProcessed += inputFile->length();
+        bytesProcessed += input_file->length();
     }
     
     SamRecord samRecord;
-    for (const auto& inputFile : alignmentInputFiles) {
+    for (const auto& inputFile : alignment_input_files_) {
         while (!(samRecord = inputFile->read()).SEQ.empty()) {
             if (HasToUpdateProgress_(counter) && update_progress_callback) {
                 bool hasToCancelOperation = update_progress_callback((inputFile->position() + bytesProcessed)/static_cast<float>(totalSizeInBytes*100.0));
@@ -134,7 +145,7 @@ bool Converter::Process()
             
             ++counter;
             SequenceRecord r{std::move(samRecord)};
-            outFile->Write(r);
+            output_file_->Write(r);
         }
         bytesProcessed += inputFile->length();
     }

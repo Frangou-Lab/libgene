@@ -19,29 +19,39 @@
 #include "Splitter.hpp"
 #include "../../utils/CppUtils.hpp"
 #include "../../utils/StringUtils.hpp"
+#include "../../file/sequence/SequenceFile.hpp"
 #include "../../log/Logger.hpp"
 
 namespace gene {
 
+template <int ThrottleCount = 1024 /* for some operations this value is way too small */>
+bool HasToUpdateProgress_(int64_t count)
+{
+    return (count % ThrottleCount) == 0;
+}
+
 Splitter::Splitter(const std::string& input_path,
                    const std::string& output_path,
                    std::unique_ptr<CommandLineFlags>&& flags)
-: Operation(std::move(flags)), inputFilePath(input_path), outputFilePath(output_path)
+: flags_(std::move(flags)), inputFilePath(input_path), outputFilePath(output_path)
 {
 }
 
 bool Splitter::Init_()
 {
-    if (!(inFile = SequenceFile::FileWithName(inputFilePath, flags_, OpenMode::Read))) {
+    if (!(input_file_ = SequenceFile::FileWithName(inputFilePath, flags_, OpenMode::Read))) {
         PrintfLog("Can't open input file\n");
         return false;
     }
-    if (!inFile->isValidGeneFile()) {
+    if (!input_file_->isValidGeneFile()) {
         PrintfLog("Input file has an invalid format\n");
         return false;
     }
     
-    outFileName = utils::ConstructOutputNameWithFile(inFile->filePath(), inFile->fileType(), outputFilePath, flags_, "-split");
+    outFileName = utils::ConstructOutputNameWithFile(input_file_->filePath(),
+                                                     input_file_->fileType(),
+                                                     outputFilePath,
+                                                     flags_, "-split");
     if (outFileName.empty())
         return false;
     
@@ -62,17 +72,20 @@ bool Splitter::Init_()
 
 bool Splitter::Process()
 {
-    if (!Operation::Process()) {
+    if (!Init_()) {
+        PrintfLog("Can't proceed further. Aborting operation.");
         return false;
     }
     
     if (fileLimit) {
         // Estimate file size
-        sizeLimit = (inFile->length()/(double)fileLimit)*101l/100l;
+        sizeLimit = (input_file_->length()/(double)fileLimit)*101l/100l;
     }
     
     if (flags_->verbose) {
-        PrintfLog("Splitting <-%s(%s)\n", inFile->filePath().c_str(), inFile->strFileType().c_str());
+        PrintfLog("Splitting <-%s(%s)\n",
+                  input_file_->filePath().c_str(),
+                  input_file_->strFileType().c_str());
         if (fileLimit)
             PrintfLog("Trying to get %lld files each of approximately %lldKB\n", fileLimit, sizeLimit/1024);
         else if (recordLimit)
@@ -86,12 +99,12 @@ bool Splitter::Process()
     long counter = 0;
     int recordCounter = 0;
     
-    SequenceFilePtr outFile = nullptr;
+    std::unique_ptr<SequenceFile> outFile = nullptr;
     
     int fileNumber = 0;
     int64_t lastChunkStart = 0;
     
-    while (!(record = inFile->Read()).Empty()) {
+    while (!(record = input_file_->Read()).Empty()) {
         if (!outFile) {
             // Open next
             ++fileNumber;
@@ -115,13 +128,13 @@ bool Splitter::Process()
             }
         } else {
             // By size
-            if (inFile->position() - lastChunkStart >= sizeLimit) {
-                lastChunkStart = inFile->position();
+            if (input_file_->position() - lastChunkStart >= sizeLimit) {
+                lastChunkStart = input_file_->position();
                 outFile = nullptr;
             }
         }
         if (HasToUpdateProgress_(counter) && update_progress_callback) {
-            bool hasToCancelOperation = update_progress_callback(inFile->position()/(float)inFile->length()*100.0);
+            bool hasToCancelOperation = update_progress_callback(input_file_->position()/(float)input_file_->length()*100.0);
             if (hasToCancelOperation) {
                 return true;
             }

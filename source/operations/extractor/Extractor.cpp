@@ -27,6 +27,7 @@
 #include "../../search/WildcardMatcher.hpp"
 #include "../../search/FuzzySearch.hpp"
 #include "../../def/Flags.hpp"
+#include "../../file/sequence/SequenceFile.hpp"
 #include "../../log/Logger.hpp"
 #include "../../def/Def.hpp"
 
@@ -37,8 +38,14 @@ constexpr int64_t kThreadLocalOutputBufferSize = 1024;
 template <typename TaskT>
 static void LaunchMultithreadedTask(TaskT& task, int files_count);
 
+template <int ThrottleCount = 1024>
+bool HasToUpdateProgress_(int64_t count)
+{
+    return (count % ThrottleCount) == 0;
+}
+
 Extractor::Extractor(ExtractorJob&& job)
-: Operation(std::move(job.flags))
+: flags_(std::move(job.flags))
 , queries_(std::move(job.queries))
 {
     demultiplex_input_ = flags_->SettingExists(Flags::kDemultiplexByTags);
@@ -102,11 +109,6 @@ Extractor::Extractor(ExtractorJob&& job)
             demultiplexed_output_files_[queries_[i - 1]] = std::move(file_pair);
         }
     }
-}
-
-bool Extractor::Init_()
-{
-    return true;
 }
 
 void Extractor::MultipleOutputFilesExtract_(std::atomic<int64_t>& counter,
@@ -356,9 +358,6 @@ void Extractor::SingleOutputFileExtract_(std::atomic<int64_t>& counter,
 
 bool Extractor::Process()
 {
-    if (!Operation::Process())
-        return false;
-    
     if (flags_->verbose) {
         std::string input_names;
         for (const auto& inFile : input_files_) {

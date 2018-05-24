@@ -17,29 +17,31 @@
 #ifndef LIBGENE_OPERATIONS_MERGER_HPP_
 #define LIBGENE_OPERATIONS_MERGER_HPP_
 
-#include "../Operation.hpp"
-#include "../../file/sequence/SequenceFile.hpp"
-#include "../../flags/CommandLineFlags.hpp"
-
 #include <vector>
 #include <string>
+#include <functional>
 
 namespace gene {
 
-class Merger final : public Operation {
+class SequenceFile;
+class CommandLineFlags;
+
+class Merger final {
  public:
     Merger(std::vector<std::string> input_paths,
            std::string output_path,
            std::unique_ptr<CommandLineFlags>&& flags);
-    bool Process() override;
+    bool Process();
+    std::function<bool(float)> update_progress_callback;
 
  private:
-    std::vector<SequenceFilePtr> inputFiles;
+    std::vector<std::unique_ptr<SequenceFile>> inputFiles;
     std::vector<std::string> inputFilePaths;
-    SequenceFilePtr outFile;
+    std::unique_ptr<SequenceFile> outFile;
+    std::unique_ptr<CommandLineFlags> flags_;
     std::string outputPath;
     int64_t total_size_in_bytes_{0};
-    bool Init_() override;
+    bool Init_();
 };
 
 }  // namespace gene

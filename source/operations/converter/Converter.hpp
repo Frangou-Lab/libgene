@@ -19,26 +19,30 @@
 
 #include <vector>
 #include <memory>
+#include <string>
+#include <functional>
 
-#include "../Operation.hpp"
-#include "../../file/sequence/SequenceFile.hpp"
-#include "../../file/alignment/AlignmentFile.hpp"
-#include "../../flags/CommandLineFlags.hpp"
-#include "../../def/Flags.hpp"
+#include "../../def/FileType.hpp"
 
 namespace gene {
 
-class Converter final : public Operation {
+class CommandLineFlags;
+class SequenceFile;
+class AlignmentFile;
+
+class Converter final {
  public:
     Converter(const std::vector<std::string>& input_paths,
               const std::string& output_path,
               std::unique_ptr<CommandLineFlags>&& flags);
-    bool Process() override;
-    
+    bool Process();
+    std::function<bool(float)> update_progress_callback;
+
  private:
-    SequenceFilePtr outFile;
-    std::vector<SequenceFilePtr> sequenceInputFiles;
-    std::vector<std::unique_ptr<AlignmentFile>> alignmentInputFiles;
+    std::unique_ptr<SequenceFile> output_file_;
+    std::vector<std::unique_ptr<SequenceFile>> sequence_input_files_;
+    std::vector<std::unique_ptr<AlignmentFile>> alignment_input_files_;
+    std::unique_ptr<CommandLineFlags> flags_;
 
     int64_t totalSizeInBytes;
     std::string outputFilePath;
@@ -46,7 +50,7 @@ class Converter final : public Operation {
     bool fastqFormatConversion{false};
     FastqVariant inputFastqVariant;
     FastqVariant outputFastqVariant;
-    bool Init_() override;
+    bool Init_();
 };
 
 }  // namespace gene

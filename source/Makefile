@@ -8,7 +8,6 @@ all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
 	libtool -static -o $@ $+
-	# ar rcs $@ $+
 
 $(OBJECTS): $(SOURCES)
 	$(CXX) -c $(CXXFLAGS) -o $@ $<

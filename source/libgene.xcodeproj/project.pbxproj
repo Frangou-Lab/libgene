@@ -99,8 +99,6 @@
 		CFBE23B51F0F9B0D00817B71 /* FinderJob.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23351F0F9B0D00817B71 /* FinderJob.hpp */; };
 		CFBE23B61F0F9B0D00817B71 /* Merger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23371F0F9B0D00817B71 /* Merger.cpp */; };
 		CFBE23B71F0F9B0D00817B71 /* Merger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23381F0F9B0D00817B71 /* Merger.hpp */; };
-		CFBE23B81F0F9B0D00817B71 /* Operation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23391F0F9B0D00817B71 /* Operation.cpp */; };
-		CFBE23B91F0F9B0D00817B71 /* Operation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE233A1F0F9B0D00817B71 /* Operation.hpp */; };
 		CFBE23BA1F0F9B0D00817B71 /* SearchPrimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */; };
 		CFBE23BB1F0F9B0D00817B71 /* SearchPrimer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE233C1F0F9B0D00817B71 /* SearchPrimer.hpp */; };
 		CFBE23BC1F0F9B0D00817B71 /* Splitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE233E1F0F9B0D00817B71 /* Splitter.cpp */; };
@@ -236,8 +234,6 @@
 		CFBE23351F0F9B0D00817B71 /* FinderJob.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FinderJob.hpp; sourceTree = "<group>"; };
 		CFBE23371F0F9B0D00817B71 /* Merger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Merger.cpp; sourceTree = "<group>"; };
 		CFBE23381F0F9B0D00817B71 /* Merger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Merger.hpp; sourceTree = "<group>"; };
-		CFBE23391F0F9B0D00817B71 /* Operation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Operation.cpp; sourceTree = "<group>"; };
-		CFBE233A1F0F9B0D00817B71 /* Operation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operation.hpp; sourceTree = "<group>"; };
 		CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SearchPrimer.cpp; sourceTree = "<group>"; };
 		CFBE233C1F0F9B0D00817B71 /* SearchPrimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SearchPrimer.hpp; sourceTree = "<group>"; };
 		CFBE233E1F0F9B0D00817B71 /* Splitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Splitter.cpp; sourceTree = "<group>"; };
@@ -479,10 +475,6 @@
 				CFBE232B1F0F9B0D00817B71 /* extractor */,
 				CFBE232F1F0F9B0D00817B71 /* filter */,
 				CFBE23321F0F9B0D00817B71 /* finder */,
-				CFBE23391F0F9B0D00817B71 /* Operation.cpp */,
-				CFBE233A1F0F9B0D00817B71 /* Operation.hpp */,
-				CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */,
-				CFBE233C1F0F9B0D00817B71 /* SearchPrimer.hpp */,
 			);
 			path = operations;
 			sourceTree = "<group>";
@@ -568,6 +560,8 @@
 		CFBE234A1F0F9B0D00817B71 /* search */ = {
 			isa = PBXGroup;
 			children = (
+				CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */,
+				CFBE233C1F0F9B0D00817B71 /* SearchPrimer.hpp */,
 				CFBE234B1F0F9B0D00817B71 /* FuzzySearch.cpp */,
 				CFBE234C1F0F9B0D00817B71 /* FuzzySearch.hpp */,
 				CFBE234E1F0F9B0D00817B71 /* strstr_simd.cpp */,
@@ -639,7 +633,6 @@
 				CFBE237F1F0F9B0D00817B71 /* GenBankAnnotation.hpp in Headers */,
 				CFBE238B1F0F9B0D00817B71 /* SequenceRecord.hpp in Headers */,
 				CFBE235D1F0F9B0D00817B71 /* AlignmentFile.hpp in Headers */,
-				CFBE23B91F0F9B0D00817B71 /* Operation.hpp in Headers */,
 				CFBE239B1F0F9B0D00817B71 /* PlainStringInputStream.hpp in Headers */,
 				CFDB67F11F9F7755000CA80D /* Tokenizer.hpp in Headers */,
 				CFDB67F51F9F7776000CA80D /* BKtree-Hamming.hpp in Headers */,
@@ -795,7 +788,6 @@
 				CFBE23BA1F0F9B0D00817B71 /* SearchPrimer.cpp in Sources */,
 				CFBE239E1F0F9B0D00817B71 /* StringInputStream.cpp in Sources */,
 				CFBE237A1F0F9B0D00817B71 /* FastaFile.cpp in Sources */,
-				CFBE23B81F0F9B0D00817B71 /* Operation.cpp in Sources */,
 				CFBE23761F0F9B0D00817B71 /* SamTag.cpp in Sources */,
 				CFBE23BF1F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.cpp in Sources */,
 				CFBE23901F0F9B0D00817B71 /* BgzfBlock.cpp in Sources */,
