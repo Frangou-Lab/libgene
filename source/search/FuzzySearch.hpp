@@ -21,7 +21,6 @@
 #include <vector>
 #include <string_view>
 
-#include "../operations/filter/Filter.hpp"
 #include "../search/SearchPrimer.hpp"
 
 namespace gene {

@@ -92,11 +92,6 @@
 		CFBE23AE1F0F9B0D00817B71 /* Extractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE232C1F0F9B0D00817B71 /* Extractor.cpp */; };
 		CFBE23AF1F0F9B0D00817B71 /* Extractor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE232D1F0F9B0D00817B71 /* Extractor.hpp */; };
 		CFBE23B01F0F9B0D00817B71 /* ExtractorJob.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE232E1F0F9B0D00817B71 /* ExtractorJob.hpp */; };
-		CFBE23B11F0F9B0D00817B71 /* Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23301F0F9B0D00817B71 /* Filter.cpp */; };
-		CFBE23B21F0F9B0D00817B71 /* Filter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23311F0F9B0D00817B71 /* Filter.hpp */; };
-		CFBE23B31F0F9B0D00817B71 /* Finder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23331F0F9B0D00817B71 /* Finder.cpp */; };
-		CFBE23B41F0F9B0D00817B71 /* Finder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23341F0F9B0D00817B71 /* Finder.hpp */; };
-		CFBE23B51F0F9B0D00817B71 /* FinderJob.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23351F0F9B0D00817B71 /* FinderJob.hpp */; };
 		CFBE23B61F0F9B0D00817B71 /* Merger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23371F0F9B0D00817B71 /* Merger.cpp */; };
 		CFBE23B71F0F9B0D00817B71 /* Merger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23381F0F9B0D00817B71 /* Merger.hpp */; };
 		CFBE23BA1F0F9B0D00817B71 /* SearchPrimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */; };
@@ -227,11 +222,6 @@
 		CFBE232C1F0F9B0D00817B71 /* Extractor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extractor.cpp; sourceTree = "<group>"; };
 		CFBE232D1F0F9B0D00817B71 /* Extractor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Extractor.hpp; sourceTree = "<group>"; };
 		CFBE232E1F0F9B0D00817B71 /* ExtractorJob.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExtractorJob.hpp; sourceTree = "<group>"; };
-		CFBE23301F0F9B0D00817B71 /* Filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Filter.cpp; sourceTree = "<group>"; };
-		CFBE23311F0F9B0D00817B71 /* Filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Filter.hpp; sourceTree = "<group>"; };
-		CFBE23331F0F9B0D00817B71 /* Finder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Finder.cpp; sourceTree = "<group>"; };
-		CFBE23341F0F9B0D00817B71 /* Finder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Finder.hpp; sourceTree = "<group>"; };
-		CFBE23351F0F9B0D00817B71 /* FinderJob.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FinderJob.hpp; sourceTree = "<group>"; };
 		CFBE23371F0F9B0D00817B71 /* Merger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Merger.cpp; sourceTree = "<group>"; };
 		CFBE23381F0F9B0D00817B71 /* Merger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Merger.hpp; sourceTree = "<group>"; };
 		CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SearchPrimer.cpp; sourceTree = "<group>"; };
@@ -473,8 +463,6 @@
 				CFBE23361F0F9B0D00817B71 /* merger */,
 				CFBE233D1F0F9B0D00817B71 /* splitter */,
 				CFBE232B1F0F9B0D00817B71 /* extractor */,
-				CFBE232F1F0F9B0D00817B71 /* filter */,
-				CFBE23321F0F9B0D00817B71 /* finder */,
 			);
 			path = operations;
 			sourceTree = "<group>";
@@ -496,25 +484,6 @@
 				CFBE232E1F0F9B0D00817B71 /* ExtractorJob.hpp */,
 			);
 			path = extractor;
-			sourceTree = "<group>";
-		};
-		CFBE232F1F0F9B0D00817B71 /* filter */ = {
-			isa = PBXGroup;
-			children = (
-				CFBE23301F0F9B0D00817B71 /* Filter.cpp */,
-				CFBE23311F0F9B0D00817B71 /* Filter.hpp */,
-			);
-			path = filter;
-			sourceTree = "<group>";
-		};
-		CFBE23321F0F9B0D00817B71 /* finder */ = {
-			isa = PBXGroup;
-			children = (
-				CFBE23331F0F9B0D00817B71 /* Finder.cpp */,
-				CFBE23341F0F9B0D00817B71 /* Finder.hpp */,
-				CFBE23351F0F9B0D00817B71 /* FinderJob.hpp */,
-			);
-			path = finder;
 			sourceTree = "<group>";
 		};
 		CFBE23361F0F9B0D00817B71 /* merger */ = {
@@ -600,7 +569,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFBE23BE1F0F9B0D00817B71 /* any.hpp in Headers */,
-				CFBE23B21F0F9B0D00817B71 /* Filter.hpp in Headers */,
 				CFBE23B71F0F9B0D00817B71 /* Merger.hpp in Headers */,
 				CFBE23CA1F0F9B0D00817B71 /* strstr_simd.hpp in Headers */,
 				CFBE23C01F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.hpp in Headers */,
@@ -610,7 +578,6 @@
 				CFBE23CB1F0F9B0D00817B71 /* WildcardMatcher.hpp in Headers */,
 				CF54E6302069349E00577A7A /* Def.hpp in Headers */,
 				CFBE23891F0F9B0D00817B71 /* SequenceFile.hpp in Headers */,
-				CFBE23B41F0F9B0D00817B71 /* Finder.hpp in Headers */,
 				CFBE23751F0F9B0D00817B71 /* SamRecord.hpp in Headers */,
 				CFBE23931F0F9B0D00817B71 /* BgzfFile.hpp in Headers */,
 				CFBE23731F0F9B0D00817B71 /* SamHeaderSQ.hpp in Headers */,
@@ -644,7 +611,6 @@
 				CFBE237B1F0F9B0D00817B71 /* FastaFile.hpp in Headers */,
 				CFBE23561F0F9B0D00817B71 /* ColumnType.h in Headers */,
 				CFDB67EF1F9F7755000CA80D /* ConcurrencySupport.hpp in Headers */,
-				CFBE23B51F0F9B0D00817B71 /* FinderJob.hpp in Headers */,
 				CFDB67F21F9F7755000CA80D /* CppUtils.hpp in Headers */,
 				CFBE239F1F0F9B0D00817B71 /* StringInputStream.hpp in Headers */,
 				CFBE23A31F0F9B0D00817B71 /* StringOutputStream.hpp in Headers */,
@@ -792,10 +758,8 @@
 				CFBE23BF1F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.cpp in Sources */,
 				CFBE23901F0F9B0D00817B71 /* BgzfBlock.cpp in Sources */,
 				CFBE23B61F0F9B0D00817B71 /* Merger.cpp in Sources */,
-				CFBE23B31F0F9B0D00817B71 /* Finder.cpp in Sources */,
 				CFBE23741F0F9B0D00817B71 /* SamRecord.cpp in Sources */,
 				CFBE238E1F0F9B0D00817B71 /* CommandLineFlags.cpp in Sources */,
-				CFBE23B11F0F9B0D00817B71 /* Filter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
