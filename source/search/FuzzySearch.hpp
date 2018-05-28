@@ -32,7 +32,7 @@ enum class Strand {
 };
 
 struct PositionAndScore {
-    uint32_t position{0}; // I think, 4GB addressing in a single sequence should be enough
+    uint32_t position{0}; // 4GB addressing in a single sequence should be enough
     uint32_t score{0};
 };
 
@@ -42,14 +42,14 @@ struct SearchResult {
     Strand where;
     
     SearchResult(int64_t position, Strand where)
-    : position(position), where(where) {
-        
+    : position(position), where(where)
+    {
     }
     SearchResult(std::pair<int64_t, int64_t> position, Strand where)
     : position(std::get<0>(position)),
       matched_length(std::get<1>(position)),
-      where(where) {
-        
+      where(where)
+    {
     }
 };
 
@@ -58,24 +58,32 @@ class FuzzySearch final {
     explicit FuzzySearch(int8_t errorCount);
     ~FuzzySearch() = default;
 
-    std::vector<SearchResult> AllOccurrencesOfQuery(const SearchPrimer& query,
-                                                    Strand search_strand,
-                                                    bool levenshtein_search) const;
+    std::vector<SearchResult>
+    AllOccurrencesOfQuery(const SearchPrimer& query,
+                          Strand search_strand,
+                          bool levenshtein_search) const;
 
-    std::vector<std::pair<int64_t, int64_t>> AllOccurrencesOfQuery(const std::string &query,
-                                                                   bool levenshtein_search) const;
-    std::vector<int64_t> AllOccurrencesOfQueryAsBindingPrimer(const std::string& query) const;
-    std::vector<PositionAndScore> AllOccurrencesByLevenshtein2(const std::string& query) const;
+    std::vector<std::pair<int64_t, int64_t>>
+    AllOccurrencesOfQuery(const std::string &query,
+                          bool levenshtein_search) const;
+    std::vector<int64_t>
+    AllOccurrencesOfQueryAsBindingPrimer(const std::string& query) const;
 
-    std::pair<int64_t, int64_t> EdgemostOccurrenceOfQuery(const SearchPrimer& query,
-                                                          const int64_t already_found,
-                                                          const int64_t query_length,
-                                                          bool complementary_search,
-                                                          const bool levenshtein_search) const;
+    std::vector<PositionAndScore>
+    AllOccurrencesByLevenshtein2(const std::string& query) const;
+
+    std::pair<int64_t, int64_t>
+    EdgemostOccurrenceOfQuery(const SearchPrimer& query,
+                              const int64_t already_found,
+                              const int64_t query_length,
+                              bool complementary_search,
+                              const bool levenshtein_search) const;
     std::string_view reference;
 
-    static int64_t FindByHamming1(std::string_view haystack, std::string_view needle);
-    static int64_t FindByHamming2(std::string_view haystack, std::string_view needle);
+    static int64_t FindByHamming1(std::string_view haystack,
+                                  std::string_view needle);
+    static int64_t FindByHamming2(std::string_view haystack,
+                                  std::string_view needle);
 
     static int64_t Find(std::string_view haystack, std::string_view needle)
     {
@@ -159,10 +167,13 @@ class FuzzySearch final {
     }
 
  private:
-    std::pair<int64_t, int64_t> LeftmostPosition_(const std::string &query,
-                                                  bool levenshtein_search = false) const;
-    std::pair<int64_t, int64_t> RightmostPosition_(const std::string &query,
-                                                   bool levenshtein_search = false) const;
+    std::pair<int64_t, int64_t>
+    LeftmostPosition_(const std::string &query,
+                      bool levenshtein_search = false) const;
+
+    std::pair<int64_t, int64_t>
+    RightmostPosition_(const std::string &query,
+                       bool levenshtein_search = false) const;
 
     const int16_t max_error_count_;
 };

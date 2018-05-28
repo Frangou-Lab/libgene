@@ -87,17 +87,6 @@
 		CFBE23A71F0F9B0D00817B71 /* StringStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23211F0F9B0D00817B71 /* StringStream.hpp */; };
 		CFBE23AA1F0F9B0D00817B71 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23251F0F9B0D00817B71 /* Logger.cpp */; };
 		CFBE23AB1F0F9B0D00817B71 /* Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23261F0F9B0D00817B71 /* Logger.hpp */; };
-		CFBE23AC1F0F9B0D00817B71 /* Converter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23291F0F9B0D00817B71 /* Converter.cpp */; };
-		CFBE23AD1F0F9B0D00817B71 /* Converter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE232A1F0F9B0D00817B71 /* Converter.hpp */; };
-		CFBE23AE1F0F9B0D00817B71 /* Extractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE232C1F0F9B0D00817B71 /* Extractor.cpp */; };
-		CFBE23AF1F0F9B0D00817B71 /* Extractor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE232D1F0F9B0D00817B71 /* Extractor.hpp */; };
-		CFBE23B01F0F9B0D00817B71 /* ExtractorJob.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE232E1F0F9B0D00817B71 /* ExtractorJob.hpp */; };
-		CFBE23B61F0F9B0D00817B71 /* Merger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23371F0F9B0D00817B71 /* Merger.cpp */; };
-		CFBE23B71F0F9B0D00817B71 /* Merger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23381F0F9B0D00817B71 /* Merger.hpp */; };
-		CFBE23BA1F0F9B0D00817B71 /* SearchPrimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */; };
-		CFBE23BB1F0F9B0D00817B71 /* SearchPrimer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE233C1F0F9B0D00817B71 /* SearchPrimer.hpp */; };
-		CFBE23BC1F0F9B0D00817B71 /* Splitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE233E1F0F9B0D00817B71 /* Splitter.cpp */; };
-		CFBE23BD1F0F9B0D00817B71 /* Splitter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE233F1F0F9B0D00817B71 /* Splitter.hpp */; };
 		CFBE23BE1F0F9B0D00817B71 /* any.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23421F0F9B0D00817B71 /* any.hpp */; };
 		CFBE23BF1F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE23431F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.cpp */; };
 		CFBE23C01F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23441F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.hpp */; };
@@ -110,6 +99,8 @@
 		CFBE23C91F0F9B0D00817B71 /* strstr_simd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBE234E1F0F9B0D00817B71 /* strstr_simd.cpp */; };
 		CFBE23CA1F0F9B0D00817B71 /* strstr_simd.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE234F1F0F9B0D00817B71 /* strstr_simd.hpp */; };
 		CFBE23CB1F0F9B0D00817B71 /* WildcardMatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBE23501F0F9B0D00817B71 /* WildcardMatcher.hpp */; };
+		CFBEC65420BBE522003A43C2 /* SearchPrimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBEC65220BBE522003A43C2 /* SearchPrimer.cpp */; };
+		CFBEC65520BBE522003A43C2 /* SearchPrimer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFBEC65320BBE522003A43C2 /* SearchPrimer.hpp */; };
 		CFDB67ED1F9F7755000CA80D /* Tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB67E61F9F7755000CA80D /* Tokenizer.cpp */; };
 		CFDB67EE1F9F7755000CA80D /* CppUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB67E71F9F7755000CA80D /* CppUtils.cpp */; };
 		CFDB67EF1F9F7755000CA80D /* ConcurrencySupport.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CFDB67E81F9F7755000CA80D /* ConcurrencySupport.hpp */; };
@@ -217,17 +208,6 @@
 		CFBE23211F0F9B0D00817B71 /* StringStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringStream.hpp; sourceTree = "<group>"; };
 		CFBE23251F0F9B0D00817B71 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
 		CFBE23261F0F9B0D00817B71 /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
-		CFBE23291F0F9B0D00817B71 /* Converter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Converter.cpp; sourceTree = "<group>"; };
-		CFBE232A1F0F9B0D00817B71 /* Converter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Converter.hpp; sourceTree = "<group>"; };
-		CFBE232C1F0F9B0D00817B71 /* Extractor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extractor.cpp; sourceTree = "<group>"; };
-		CFBE232D1F0F9B0D00817B71 /* Extractor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Extractor.hpp; sourceTree = "<group>"; };
-		CFBE232E1F0F9B0D00817B71 /* ExtractorJob.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExtractorJob.hpp; sourceTree = "<group>"; };
-		CFBE23371F0F9B0D00817B71 /* Merger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Merger.cpp; sourceTree = "<group>"; };
-		CFBE23381F0F9B0D00817B71 /* Merger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Merger.hpp; sourceTree = "<group>"; };
-		CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SearchPrimer.cpp; sourceTree = "<group>"; };
-		CFBE233C1F0F9B0D00817B71 /* SearchPrimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SearchPrimer.hpp; sourceTree = "<group>"; };
-		CFBE233E1F0F9B0D00817B71 /* Splitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Splitter.cpp; sourceTree = "<group>"; };
-		CFBE233F1F0F9B0D00817B71 /* Splitter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Splitter.hpp; sourceTree = "<group>"; };
 		CFBE23421F0F9B0D00817B71 /* any.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = any.hpp; sourceTree = "<group>"; };
 		CFBE23431F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColumnTypesConfigurationCpp.cpp; sourceTree = "<group>"; };
 		CFBE23441F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColumnTypesConfigurationCpp.hpp; sourceTree = "<group>"; };
@@ -240,6 +220,8 @@
 		CFBE234E1F0F9B0D00817B71 /* strstr_simd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strstr_simd.cpp; sourceTree = "<group>"; };
 		CFBE234F1F0F9B0D00817B71 /* strstr_simd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strstr_simd.hpp; sourceTree = "<group>"; };
 		CFBE23501F0F9B0D00817B71 /* WildcardMatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WildcardMatcher.hpp; sourceTree = "<group>"; };
+		CFBEC65220BBE522003A43C2 /* SearchPrimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SearchPrimer.cpp; path = ../../../../libgene/source/search/SearchPrimer.cpp; sourceTree = "<group>"; };
+		CFBEC65320BBE522003A43C2 /* SearchPrimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SearchPrimer.hpp; path = ../../../../libgene/source/search/SearchPrimer.hpp; sourceTree = "<group>"; };
 		CFDB67E61F9F7755000CA80D /* Tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tokenizer.cpp; sourceTree = "<group>"; };
 		CFDB67E71F9F7755000CA80D /* CppUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppUtils.cpp; sourceTree = "<group>"; };
 		CFDB67E81F9F7755000CA80D /* ConcurrencySupport.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConcurrencySupport.hpp; sourceTree = "<group>"; };
@@ -272,7 +254,6 @@
 				CFBE23051F0F9B0D00817B71 /* flags */,
 				CFBE23081F0F9B0D00817B71 /* io */,
 				CFBE23241F0F9B0D00817B71 /* log */,
-				CFBE23271F0F9B0D00817B71 /* operations */,
 				CFBE23401F0F9B0D00817B71 /* plist */,
 				CFBE234A1F0F9B0D00817B71 /* search */,
 				CFBE23511F0F9B0D00817B71 /* utils */,
@@ -456,54 +437,6 @@
 			path = log;
 			sourceTree = "<group>";
 		};
-		CFBE23271F0F9B0D00817B71 /* operations */ = {
-			isa = PBXGroup;
-			children = (
-				CFBE23281F0F9B0D00817B71 /* converter */,
-				CFBE23361F0F9B0D00817B71 /* merger */,
-				CFBE233D1F0F9B0D00817B71 /* splitter */,
-				CFBE232B1F0F9B0D00817B71 /* extractor */,
-			);
-			path = operations;
-			sourceTree = "<group>";
-		};
-		CFBE23281F0F9B0D00817B71 /* converter */ = {
-			isa = PBXGroup;
-			children = (
-				CFBE23291F0F9B0D00817B71 /* Converter.cpp */,
-				CFBE232A1F0F9B0D00817B71 /* Converter.hpp */,
-			);
-			path = converter;
-			sourceTree = "<group>";
-		};
-		CFBE232B1F0F9B0D00817B71 /* extractor */ = {
-			isa = PBXGroup;
-			children = (
-				CFBE232C1F0F9B0D00817B71 /* Extractor.cpp */,
-				CFBE232D1F0F9B0D00817B71 /* Extractor.hpp */,
-				CFBE232E1F0F9B0D00817B71 /* ExtractorJob.hpp */,
-			);
-			path = extractor;
-			sourceTree = "<group>";
-		};
-		CFBE23361F0F9B0D00817B71 /* merger */ = {
-			isa = PBXGroup;
-			children = (
-				CFBE23371F0F9B0D00817B71 /* Merger.cpp */,
-				CFBE23381F0F9B0D00817B71 /* Merger.hpp */,
-			);
-			path = merger;
-			sourceTree = "<group>";
-		};
-		CFBE233D1F0F9B0D00817B71 /* splitter */ = {
-			isa = PBXGroup;
-			children = (
-				CFBE233E1F0F9B0D00817B71 /* Splitter.cpp */,
-				CFBE233F1F0F9B0D00817B71 /* Splitter.hpp */,
-			);
-			path = splitter;
-			sourceTree = "<group>";
-		};
 		CFBE23401F0F9B0D00817B71 /* plist */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,10 +462,10 @@
 		CFBE234A1F0F9B0D00817B71 /* search */ = {
 			isa = PBXGroup;
 			children = (
-				CFBE233B1F0F9B0D00817B71 /* SearchPrimer.cpp */,
-				CFBE233C1F0F9B0D00817B71 /* SearchPrimer.hpp */,
 				CFBE234B1F0F9B0D00817B71 /* FuzzySearch.cpp */,
 				CFBE234C1F0F9B0D00817B71 /* FuzzySearch.hpp */,
+				CFBEC65220BBE522003A43C2 /* SearchPrimer.cpp */,
+				CFBEC65320BBE522003A43C2 /* SearchPrimer.hpp */,
 				CFBE234E1F0F9B0D00817B71 /* strstr_simd.cpp */,
 				CFBE234F1F0F9B0D00817B71 /* strstr_simd.hpp */,
 				CF54E6312069352900577A7A /* Trie.cpp */,
@@ -569,7 +502,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFBE23BE1F0F9B0D00817B71 /* any.hpp in Headers */,
-				CFBE23B71F0F9B0D00817B71 /* Merger.hpp in Headers */,
 				CFBE23CA1F0F9B0D00817B71 /* strstr_simd.hpp in Headers */,
 				CFBE23C01F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.hpp in Headers */,
 				CFBE236A1F0F9B0D00817B71 /* SamHeader.hpp in Headers */,
@@ -578,6 +510,7 @@
 				CFBE23CB1F0F9B0D00817B71 /* WildcardMatcher.hpp in Headers */,
 				CF54E6302069349E00577A7A /* Def.hpp in Headers */,
 				CFBE23891F0F9B0D00817B71 /* SequenceFile.hpp in Headers */,
+				CFBEC65520BBE522003A43C2 /* SearchPrimer.hpp in Headers */,
 				CFBE23751F0F9B0D00817B71 /* SamRecord.hpp in Headers */,
 				CFBE23931F0F9B0D00817B71 /* BgzfFile.hpp in Headers */,
 				CFBE23731F0F9B0D00817B71 /* SamHeaderSQ.hpp in Headers */,
@@ -592,7 +525,6 @@
 				CFBE23871F0F9B0D00817B71 /* GenomicTsvFile.hpp in Headers */,
 				CFBE238D1F0F9B0D00817B71 /* TxtFile.hpp in Headers */,
 				CFBE23711F0F9B0D00817B71 /* SamHeaderRG.hpp in Headers */,
-				CFBE23BB1F0F9B0D00817B71 /* SearchPrimer.hpp in Headers */,
 				CFBE23911F0F9B0D00817B71 /* BgzfBlock.hpp in Headers */,
 				CFBE23C71F0F9B0D00817B71 /* FuzzySearch.hpp in Headers */,
 				CFBE23AB1F0F9B0D00817B71 /* Logger.hpp in Headers */,
@@ -603,7 +535,6 @@
 				CFBE239B1F0F9B0D00817B71 /* PlainStringInputStream.hpp in Headers */,
 				CFDB67F11F9F7755000CA80D /* Tokenizer.hpp in Headers */,
 				CFDB67F51F9F7776000CA80D /* BKtree-Hamming.hpp in Headers */,
-				CFBE23B01F0F9B0D00817B71 /* ExtractorJob.hpp in Headers */,
 				CFBE23581F0F9B0D00817B71 /* Extensions.hpp in Headers */,
 				CFBE23791F0F9B0D00817B71 /* SeparatedFile.hpp in Headers */,
 				CFBE23771F0F9B0D00817B71 /* SamTag.hpp in Headers */,
@@ -615,11 +546,9 @@
 				CFBE239F1F0F9B0D00817B71 /* StringInputStream.hpp in Headers */,
 				CFBE23A31F0F9B0D00817B71 /* StringOutputStream.hpp in Headers */,
 				CFBE236B1F0F9B0D00817B71 /* SamHeaderComponent.hpp in Headers */,
-				CFBE23AD1F0F9B0D00817B71 /* Converter.hpp in Headers */,
 				CFBE236D1F0F9B0D00817B71 /* SamHeaderHD.hpp in Headers */,
 				CFBE23811F0F9B0D00817B71 /* GenBankFile.hpp in Headers */,
 				CFBE23681F0F9B0D00817B71 /* SamFile.hpp in Headers */,
-				CFBE23BD1F0F9B0D00817B71 /* Splitter.hpp in Headers */,
 				CFBE23851F0F9B0D00817B71 /* GenomicSeparatedFile.hpp in Headers */,
 				CFBE23951F0F9B0D00817B71 /* IOFile.hpp in Headers */,
 				CFBE23971F0F9B0D00817B71 /* CompressedStringInputStream.hpp in Headers */,
@@ -628,7 +557,6 @@
 				CFBE23C21F0F9B0D00817B71 /* Plist.hpp in Headers */,
 				CFBE238F1F0F9B0D00817B71 /* CommandLineFlags.hpp in Headers */,
 				CFBE23591F0F9B0D00817B71 /* FileType.hpp in Headers */,
-				CFBE23AF1F0F9B0D00817B71 /* Extractor.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,20 +658,18 @@
 				CFBE23921F0F9B0D00817B71 /* BgzfFile.cpp in Sources */,
 				CFBE23721F0F9B0D00817B71 /* SamHeaderSQ.cpp in Sources */,
 				CFBE23881F0F9B0D00817B71 /* SequenceFile.cpp in Sources */,
-				CFBE23BC1F0F9B0D00817B71 /* Splitter.cpp in Sources */,
 				CF5B720320205A5D00E01975 /* BKtree-Hamming.cpp in Sources */,
 				CFBE23701F0F9B0D00817B71 /* SamHeaderRG.cpp in Sources */,
 				CFBE23A21F0F9B0D00817B71 /* StringOutputStream.cpp in Sources */,
 				CFBE239A1F0F9B0D00817B71 /* PlainStringInputStream.cpp in Sources */,
 				CFBE23961F0F9B0D00817B71 /* CompressedStringInputStream.cpp in Sources */,
+				CFBEC65420BBE522003A43C2 /* SearchPrimer.cpp in Sources */,
 				CF54E6322069352900577A7A /* Trie.cpp in Sources */,
 				CFBE23571F0F9B0D00817B71 /* Extensions.cpp in Sources */,
-				CFBE23AE1F0F9B0D00817B71 /* Extractor.cpp in Sources */,
 				CFDB67ED1F9F7755000CA80D /* Tokenizer.cpp in Sources */,
 				CFBE23821F0F9B0D00817B71 /* GenomicCsvFile.cpp in Sources */,
 				CFBE23C41F0F9B0D00817B71 /* pugixml.cpp in Sources */,
 				CFBE23941F0F9B0D00817B71 /* IOFile.cpp in Sources */,
-				CFBE23AC1F0F9B0D00817B71 /* Converter.cpp in Sources */,
 				CFDB67F31F9F7755000CA80D /* StringUtils.cpp in Sources */,
 				CFBE23A61F0F9B0D00817B71 /* StringStream.cpp in Sources */,
 				CFBE235A1F0F9B0D00817B71 /* Flags.cpp in Sources */,
@@ -751,13 +677,11 @@
 				CFBE23C91F0F9B0D00817B71 /* strstr_simd.cpp in Sources */,
 				CFDB67EE1F9F7755000CA80D /* CppUtils.cpp in Sources */,
 				CFBE23641F0F9B0D00817B71 /* FinderFile.cpp in Sources */,
-				CFBE23BA1F0F9B0D00817B71 /* SearchPrimer.cpp in Sources */,
 				CFBE239E1F0F9B0D00817B71 /* StringInputStream.cpp in Sources */,
 				CFBE237A1F0F9B0D00817B71 /* FastaFile.cpp in Sources */,
 				CFBE23761F0F9B0D00817B71 /* SamTag.cpp in Sources */,
 				CFBE23BF1F0F9B0D00817B71 /* ColumnTypesConfigurationCpp.cpp in Sources */,
 				CFBE23901F0F9B0D00817B71 /* BgzfBlock.cpp in Sources */,
-				CFBE23B61F0F9B0D00817B71 /* Merger.cpp in Sources */,
 				CFBE23741F0F9B0D00817B71 /* SamRecord.cpp in Sources */,
 				CFBE238E1F0F9B0D00817B71 /* CommandLineFlags.cpp in Sources */,
 			);
