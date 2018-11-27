@@ -1,9 +1,6 @@
 libgene
 =======
 
-Usage
------
-
 Building
 --------
 Requires Xcode 9.3+
